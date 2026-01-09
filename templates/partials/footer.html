@@ -5,10 +5,11 @@
             &copy; 2026 {{ call .T "footer_rights" }} Built with Go and HTMX.
         </div>
         <div class="flex gap-8 text-xs font-medium text-slate-500">
-            <a href="#" class="hover:text-indigo-600">{{ call .T "nav_about" }}</a>
-            <a href="#" class="hover:text-indigo-600">{{ call .T "nav_privacy" }}</a>
-            <a href="#" class="hover:text-indigo-600">{{ call .T "nav_terms" }}</a>
-            <a href="#" class="hover:text-indigo-600">{{ call .T "nav_contact" }}</a>
+            <a href="{{ call .L "/about" }}" class="hover:text-indigo-600">{{ call .T "nav_about" }}</a>
+            <a href="{{ call .L "/privacy" }}" class="hover:text-indigo-600">{{ call .T "nav_privacy" }}</a>
+            <a href="{{ call .L "/terms" }}" class="hover:text-indigo-600">{{ call .T "nav_terms" }}</a>
+            <a href="{{ call .L "/contact" }}" class="hover:text-indigo-600">{{ call .T "nav_contact" }}</a>
+            <a href="/sitemap.xml" class="hover:text-indigo-600">{{ call .T "nav_sitemap" }}</a>
         </div>
     </div>
 </footer>

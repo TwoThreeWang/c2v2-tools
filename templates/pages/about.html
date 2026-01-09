@@ -1,0 +1,40 @@
+{{ define "about.html" }}
+<!DOCTYPE html>
+<html lang="{{ .lang }}">
+{{ template "head" . }}
+
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+    {{ template "header" . }}
+
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl font-extrabold text-slate-900 mb-4">{{ call .T "about_title" }}</h1>
+            <p class="text-slate-600 leading-relaxed">{{ call .T "about_desc" }}</p>
+        </header>
+
+        <article class="prose prose-slate max-w-none bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+            <p class="mb-6">{{ call .T "about_p1" }}</p>
+            <p class="mb-8">{{ call .T "about_p2" }}</p>
+
+            <h2 class="text-xl font-bold mb-4">{{ call .T "about_h2_why" }}</h2>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start">
+                    <svg class="w-5 h-5 text-indigo-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>{{ call .T "about_li_privacy" }}</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="w-5 h-5 text-indigo-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>{{ call .T "about_li_speed" }}</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="w-5 h-5 text-indigo-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span>{{ call .T "about_li_free" }}</span>
+                </li>
+            </ul>
+        </article>
+    </main>
+
+    {{ template "footer" . }}
+</body>
+</html>
+{{ end }}

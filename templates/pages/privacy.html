@@ -1,0 +1,29 @@
+{{ define "privacy.html" }}
+<!DOCTYPE html>
+<html lang="{{ .lang }}">
+{{ template "head" . }}
+
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+    {{ template "header" . }}
+
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl font-extrabold text-slate-900 mb-4">{{ call .T "privacy_title" }}</h1>
+            <p class="text-slate-600 leading-relaxed">{{ call .T "privacy_desc" }}</p>
+        </header>
+
+        <article class="prose prose-slate max-w-none bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+            <p class="mb-8">{{ call .T "privacy_p1" }}</p>
+
+            <h2 class="text-xl font-bold mb-4">{{ call .T "privacy_h2_local" }}</h2>
+            <p class="mb-8">{{ call .T "privacy_p_local" }}</p>
+
+            <h2 class="text-xl font-bold mb-4">{{ call .T "privacy_h2_logs" }}</h2>
+            <p>{{ call .T "privacy_p_logs" }}</p>
+        </article>
+    </main>
+
+    {{ template "footer" . }}
+</body>
+</html>
+{{ end }}

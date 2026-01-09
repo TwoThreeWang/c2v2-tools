@@ -196,6 +196,20 @@ func SetupRouter(i18nMgr *i18n.Manager) *gin.Engine {
 		defaultGroup.POST("/json-fmt", jsonTool.Handler)
 		defaultGroup.GET("/html-fmt", htmlTool.Handler)
 		defaultGroup.POST("/html-fmt", htmlTool.Handler)
+
+		// 静态页面路由
+		defaultGroup.GET("/about", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc"})
+		})
+		defaultGroup.GET("/privacy", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc"})
+		})
+		defaultGroup.GET("/terms", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc"})
+		})
+		defaultGroup.GET("/contact", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc"})
+		})
 	}
 
 	// 2. 其他语言路由 (例如 /zh/...)
@@ -221,6 +235,20 @@ func SetupRouter(i18nMgr *i18n.Manager) *gin.Engine {
 		langGroup.POST("/json-fmt", jsonTool.Handler)
 		langGroup.GET("/html-fmt", htmlTool.Handler)
 		langGroup.POST("/html-fmt", htmlTool.Handler)
+
+		// 静态页面路由
+		langGroup.GET("/about", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc"})
+		})
+		langGroup.GET("/privacy", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc"})
+		})
+		langGroup.GET("/terms", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc"})
+		})
+		langGroup.GET("/contact", func(c *gin.Context) {
+			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc"})
+		})
 	}
 
 	return r

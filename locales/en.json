@@ -131,6 +131,37 @@
         "html_seo_faq_1_q": "Why is HTML formatting important?",
         "html_seo_faq_1_a": "HTML formatting improves code readability, makes debugging easier, helps identify syntax errors, ensures consistent coding standards, and makes collaboration more efficient. Well-formatted code is also more accessible to screen readers and easier to maintain over time.",
         "html_seo_faq_2_q": "Does formatting affect HTML performance?",
-        "html_seo_faq_2_a": "Formatted HTML itself doesn't affect runtime performance, but minified HTML (which our tool also provides) can slightly improve load times by reducing file size. The main benefit is development efficiency - readable code is easier to optimize and debug, leading to better overall performance."
+        "html_seo_faq_2_a": "Formatted HTML itself doesn't affect runtime performance, but minified HTML (which our tool also provides) can slightly improve load times by reducing file size. The main benefit is development efficiency - readable code is easier to optimize and debug, leading to better overall performance.",
+        
+        "about_title": "About C2V2 Tools",
+        "about_desc": "Learn more about our mission and the technology behind our developer toolbox.",
+        "about_p1": "C2V2 Tools is a comprehensive collection of free, high-performance online developer utilities. Our mission is to provide developers with fast, secure, and easy-to-use tools that enhance productivity without compromising privacy.",
+        "about_p2": "We believe in the power of the web. Most of our tools are designed to run directly in your browser using modern web technologies like HTMX and AlpineJS, ensuring that your sensitive data never leaves your device.",
+        "about_h2_why": "Why C2V2?",
+        "about_li_privacy": "Privacy First: Local processing whenever possible.",
+        "about_li_speed": "High Performance: Lightweight and fast loading.",
+        "about_li_free": "100% Free: No registration or hidden costs.",
+        
+        "privacy_title": "Privacy Policy",
+        "privacy_desc": "Your privacy is our priority. Learn how we handle your data.",
+        "privacy_p1": "At C2V2 Tools, we take your privacy seriously. This policy outlines our commitment to protecting your data.",
+        "privacy_h2_local": "Local Processing",
+        "privacy_p_local": "The majority of our tools (like Base64 and HTML formatting) process data entirely within your browser. Your input data is never sent to our servers.",
+        "privacy_h2_logs": "Server Logs",
+        "privacy_p_logs": "Like most websites, we may collect standard server logs (IP address, browser type, etc.) for security and analytics purposes. We do not sell this information to third parties.",
+        
+        "terms_title": "Terms of Service",
+        "terms_desc": "Please read our terms carefully before using our tools.",
+        "terms_p1": "By using C2V2 Tools, you agree to comply with the following terms.",
+        "terms_h2_usage": "Acceptable Use",
+        "terms_p_usage": "You may use our tools for personal or commercial purposes. You agree not to use the service for any illegal activities or to disrupt the service for others.",
+        "terms_h2_disclaimer": "Disclaimer",
+        "terms_p_disclaimer": "Our tools are provided 'as is' without any warranties. While we strive for accuracy, we are not responsible for any data loss or errors resulting from the use of our tools.",
+        
+        "contact_title": "Contact Us",
+        "contact_desc": "Have a question or feedback? We'd love to hear from you.",
+        "contact_p1": "We are constantly looking to improve our tools. If you have suggestions, bug reports, or just want to say hello, feel free to reach out.",
+        "contact_email": "Email: support@c2v2.tools",
+        "contact_github": "GitHub: github.com/c2v2/tools"
     }
     
