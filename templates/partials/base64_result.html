@@ -1,0 +1,26 @@
+{{ define "base64_result.html" }}
+<div class="relative w-full h-full flex flex-col">
+    {{ if .isError }}
+        <div class="w-full h-full p-4 text-red-600 font-mono text-sm bg-red-50 border border-red-200 rounded-lg">
+            {{ .result }}
+        </div>
+    {{ else }}
+        <label for="output-text" class="sr-only">Output Result</label>
+        <textarea id="output-text" readonly class="flex-grow w-full p-4 bg-slate-50 font-mono text-sm resize-none outline-none text-slate-700">{{ .result }}</textarea>
+        
+        <!-- Stats Bar -->
+        <div class="absolute bottom-2 right-2 px-2 py-1 bg-slate-100/80 backdrop-blur rounded text-[10px] text-slate-500 font-mono pointer-events-none">
+            {{ .charCount }} {{ call .T "stats_chars" }} | {{ .byteCount }} {{ call .T "stats_bytes" }}
+        </div>
+
+        <!-- Copy Button Overlay -->
+        <button 
+            type="button"
+            onclick="navigator.clipboard.writeText(document.getElementById('output-text').value).then(() => { this.innerHTML = '<span class=\'text-green-600\'>Copied!</span>'; setTimeout(() => this.innerText = 'Copy', 2000) })"
+            class="absolute top-2 right-2 px-3 py-1 bg-white border border-slate-200 rounded text-xs font-semibold text-slate-600 shadow-sm hover:border-indigo-500 hover:text-indigo-600 transition-all z-10"
+        >
+            Copy
+        </button>
+    {{ end }}
+</div>
+{{ end }}

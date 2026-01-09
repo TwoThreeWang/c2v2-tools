@@ -1,0 +1,63 @@
+{{ define "index.html" }}
+<!DOCTYPE html>
+<html lang="{{ .lang }}">
+{{ template "head" . }}
+
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+    {{ template "header" . }}
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        <!-- Hero Section -->
+        <section class="mb-12">
+            <h1 class="text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">
+                {{ call .T "hero_title" }}
+            </h1>
+            <p class="text-slate-600 max-w-2xl leading-relaxed">
+                {{ call .T "hero_subtitle" }}
+            </p>
+            
+            <!-- HTMX 搜索 -->
+            <div class="mt-8 relative max-w-lg">
+                <input type="search" 
+                       name="q"
+                       placeholder="{{ call .T "search_placeholder" }}" 
+                       hx-get="{{ call .L "/api/search" }}" 
+                       hx-trigger="keyup changed delay:300ms" 
+                       hx-target="#content-area" 
+                       class="w-full bg-white border border-slate-300 rounded-md py-2 px-4 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none shadow-sm">
+                <div class="absolute right-3 top-2.5 text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <!-- Category Pills Navigation -->
+            <nav class="flex flex-wrap gap-2 mt-6">
+                {{ range .Categories }}
+                <a href="#{{ .ID }}" class="px-4 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-semibold text-slate-600 hover:border-indigo-500 hover:text-indigo-600 transition-colors shadow-sm">
+                    {{ call $.T .NameKey }}
+                </a>
+                {{ end }}
+            </nav>
+        </section>
+
+        <!-- 动态内容区域：默认显示分类，搜索时被替换为工具网格 -->
+        <div id="content-area">
+            {{ template "category_list" . }}
+        </div>
+
+        <!-- SEO 补充内容区 -->
+        <section class="mt-20 pt-10 border-t border-slate-200">
+            <div class="prose prose-sm prose-slate max-w-none">
+                <h2 class="text-xl font-bold mb-4 italic text-slate-700">{{ call .T "seo_why_title" }}</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-slate-500 text-sm leading-6">
+                    <p>{{ call .T "seo_why_p1" }}</p>
+                    <p>{{ call .T "seo_why_p2" }}</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{ template "footer" . }}
+</body>
+</html>
+{{ end }}

@@ -1,0 +1,159 @@
+{
+    "app_name": "C2V2 工具箱",
+    "meta_title_index": "C2V2 在线工具箱 - 免费开发者工具",
+    "meta_desc_index": "集合了 Base64 转换、JSON 格式化等高性能在线开发者工具。",
+    "footer_rights": "C2V2 工具箱. 版权所有.",
+    
+    "nav_home": "首页",
+    "nav_popular": "热门工具",
+    "nav_sitemap": "站点地图",
+    "nav_about": "关于我们",
+    "nav_privacy": "隐私政策",
+    "nav_terms": "服务条款",
+    "nav_contact": "联系我们",
+
+    "index_title": "推荐工具",
+    "hero_title": "免费开发者工具箱",
+    "hero_subtitle": "一系列隐私优先的在线工具。快速、安全，所有处理均在您的浏览器本地完成。",
+    "search_placeholder": "搜索工具...",
+    
+    "cat_encoders_title": "编码与解码",
+    "cat_encoders_desc": "安全转换数据格式，无需上传数据。调试 Auth Token 和 API 的得力助手。",
+    "cat_formatters_title": "代码格式化",
+    "cat_formatters_desc": "美化并验证您的代码片段。处理 JSON、XML 及各种数据结构的必备工具。",
+
+    "use_tool_btn": "使用工具",
+    
+    "seo_why_title": "为什么选择我们的在线工具？",
+    "seo_why_p1": "我们提供一系列**隐私优先的在线工具**。无论您需要 Base64 转换器还是 JSON 格式化工具，我们都能提供快速且安全的解决方案。所有数据处理均在您的浏览器本地完成。",
+    "seo_why_p2": "我们支持**中英文**多语言，服务全球用户。我们的工具针对移动端和桌面端进行了优化，无需注册即可在所有设备上获得流畅体验。",
+    
+    "tool_base64_title": "Base64 编码/解码",
+    "tool_base64_desc": "免费在线工具，实现文本与 Base64 互相转换。快速、安全，浏览器本地处理。",
+    "tool_base64_page_title": "Base64 编码与解码 - 在线转换工具",
+    "tool_base64_page_desc": "即时将文本转换为 Base64 字符串，或进行反向解码。支持 UTF-8。隐私优先的开发者工具。",
+    
+    "nav_dev_tools": "开发者工具",
+    "breadcrumb_home": "首页",
+    "stats_chars": "字符",
+    "stats_bytes": "字节",
+    
+    "b64_input_label": "输入内容",
+    "b64_input_placeholder": "在此输入或粘贴内容...",
+    "b64_output_label": "转换结果",
+    "b64_action_encode": "Base64 编码",
+    "b64_action_decode": "Base64 解码",
+    "b64_copy": "复制结果",
+    "b64_copied": "已复制",
+    "b64_clear": "清空",
+    "b64_error_empty": "请输入一些内容。",
+    "b64_error_invalid": "无效的 Base64 字符串，请检查输入。",
+
+    "b64_seo_h2_what": "什么是 Base64 编码？",
+    "b64_seo_p_what": "Base64 是一种基于 64 个可打印字符来表示二进制数据的表示方法。它常用于在处理文本数据的场合，表示、传输、存储一些二进制数据。",
+    "b64_seo_h2_use": "什么时候使用 Base64？",
+    "b64_seo_p_use": "当需要通过只支持 ASCII 字符的协议（如 Email）传输二进制数据时，通常使用 Base64。常见的应用场景包括：在 HTML/CSS 中嵌入小图片、邮件附件传输、以及 API 认证信息的编码。",
+    "b64_seo_faq_1_q": "Base64 是加密吗？",
+    "b64_seo_faq_1_a": "不，Base64 不是加密算法，它只是一种编码方式。任何人都能够将 Base64 字符串还原为原始数据。绝不能用它来保护密码等敏感信息。",
+    "b64_seo_faq_2_q": "Base64 会增加文件大小吗？",
+    "b64_seo_faq_2_a": "是的，Base64 编码后的数据体积大约会增加 33%。这是因为每 3 个字节的二进制数据会被编码为 4 个 ASCII 字符。",
+
+        "tool_json_title": "JSON 格式化与校验",
+
+        "tool_json_desc": "免费在线工具，用于格式化（美化）或压缩 JSON 数据。即时校验语法并修复错误。",
+
+        "tool_json_page_title": "JSON 格式化、校验与压缩 - 在线工具",
+
+        "tool_json_page_desc": "最佳在线 JSON 格式化工具，美化、压缩并校验 JSON 数据。隐私优先，浏览器本地运行。",
+
+    
+
+        "json_input_label": "JSON 数据",
+
+        "json_input_placeholder": "在此粘贴 JSON...",
+
+        "json_output_label": "格式化结果",
+
+        "json_action_format": "格式化 (美化)",
+
+        "json_action_minify": "压缩 (Minify)",
+
+        "json_error_empty": "请输入一些 JSON 数据。",
+
+        "json_error_invalid": "无效的 JSON: ",
+        "json_error_line": "第",
+        "json_error_column": "列",
+        "json_error_context": "上下文",
+
+        "json_copy": "复制 JSON",
+
+        "json_clear": "清空",
+
+    
+
+        "json_seo_h2_what": "什么是 JSON？",
+
+        "json_seo_p_what": "JSON (JavaScript Object Notation) 是一种轻量级的数据交换格式。它易于人阅读和编写，同时也易于机器解析和生成。它是基于 JavaScript 编程语言的一个子集。",
+
+        "json_seo_h2_why": "为什么需要格式化 JSON？",
+
+        "json_seo_p_why": "API 和服务器为了节省带宽，通常返回压缩后的 JSON（没有空格和换行）。这使得数据难以阅读。JSON 格式化工具通过添加适当的缩进和换行来美化数据，使其便于调试和阅读。",
+
+        "json_seo_faq_1_q": "我的数据安全吗？",
+
+        "json_seo_faq_1_a": "是的！本工具在您的浏览器本地处理 JSON 数据（或仅在服务器端进行渲染），绝不会存储您的任何数据。我们优先考虑隐私。",
+
+        "json_seo_faq_2_q": "什么是压缩 (Minification)？",
+
+        "json_seo_faq_2_a": "压缩是指在不改变功能的前提下，移除 JSON 代码中所有不必要的字符（如空格和换行）。这可以减小文件大小，加快传输速度。",
+
+        "json_action_validate": "校验",
+        "json_convert_dropdown": "转换 ▼",
+        "json_convert_to_go": "JSON → Go 结构体",
+        "json_convert_to_yaml": "JSON → YAML",
+        "json_layout_toggle_title": "切换布局",
+        "json_processing": "处理中...",
+        "json_result_placeholder": "结果将在此显示...",
+        
+        "tool_html_title": "HTML 格式化与预览",
+        "tool_html_desc": "免费在线工具，用于格式化、压缩和预览 HTML 代码。即时校验语法并美化标记。",
+        "tool_html_page_title": "HTML 格式化、压缩与预览 - 在线工具",
+        "tool_html_page_desc": "最佳在线 HTML 格式化工具，美化、压缩并预览 HTML 代码。隐私优先，浏览器本地运行。",
+        
+        "html_input_label": "HTML 代码",
+        "html_input_placeholder": "在此粘贴 HTML...",
+        "html_output_label": "格式化 HTML",
+        "html_preview_label": "实时预览",
+        "html_toggle_preview": "显示预览",
+        "html_hide_preview": "隐藏预览",
+        "html_format": "格式化",
+        "html_minify": "压缩",
+        "html_escape": "转义",
+        "html_unescape": "反转义",
+        "html_error_title": "HTML 错误",
+        "html_error_position": "位置",
+        "html_copy": "复制 HTML",
+        "html_clear": "清空",
+        "html_stats_empty": "输入 HTML 代码以查看统计信息",
+        "html_stats_format": "{lines} 行，{chars} 字符，{words} 单词",
+        "html_output_stats": "{lines} 行，{chars} 字符",
+        "html_error_empty": "请输入一些 HTML 代码。",
+        "html_error_invalid": "无效的 HTML：",
+        "html_input_empty": "请先输入 HTML 代码",
+        "html_preview": "预览",
+        "processing": "处理中...",
+        
+        "html_seo_title": "什么是 HTML 格式化？",
+        "html_seo_description": "HTML 格式化让您的标记代码更易读和可维护。我们的工具帮助您美化杂乱的 HTML，为生产环境压缩代码，或转义特殊字符以安全显示。",
+        "html_seo_content": "HTML（超文本标记语言）是创建网页的标准标记语言。正确格式化的 HTML 对于可维护性、调试和协作至关重要。我们的 HTML 格式化工具帮助您通过适当的缩进整理杂乱的代码，校验语法以尽早发现错误，并实时预览您的 HTML 以查看其在浏览器中的渲染效果。无论您是在清理生成的 HTML、准备生产代码，还是教授 Web 开发，我们的工具都提供隐私优先的解决方案，所有处理都在您的浏览器本地完成。",
+        "html_seo_h2_what": "什么是 HTML 格式化？",
+        "html_seo_p_what": "HTML 格式化是组织和结构化 HTML 代码以使其更易读和可维护的过程。这包括适当的缩进、一致的间距和元素的逻辑组织。格式良好的 HTML 更容易调试、协作和长期维护。",
+        "html_seo_h2_use": "什么时候使用 HTML 格式化？",
+        "html_seo_p_use": "在处理杂乱或压缩的代码、准备生产环境的 HTML、教授 Web 开发或与其他开发者协作时使用 HTML 格式化。在调试布局问题、审查生成的 HTML 或确保可访问性合规性时也很重要。我们的工具帮助您应对所有这些场景，同时提供实时预览和验证。",
+        "html_seo_faq_1_q": "为什么 HTML 格式化很重要？",
+        "html_seo_faq_1_a": "HTML 格式化提高了代码可读性，使调试更容易，帮助识别语法错误，确保一致的编码标准，并使协作更高效。格式良好的代码对屏幕阅读器也更友好，更容易长期维护。",
+        "html_seo_faq_2_q": "格式化会影响 HTML 性能吗？",
+        "html_seo_faq_2_a": "格式化后的 HTML 本身不会影响运行时性能，但压缩后的 HTML（我们的工具也提供）可以通过减小文件大小来略微提高加载时间。主要好处是开发效率 - 可读的代码更容易优化和调试，从而获得更好的整体性能。"
+    }
+
+    

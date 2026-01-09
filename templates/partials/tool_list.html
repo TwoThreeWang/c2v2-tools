@@ -1,0 +1,11 @@
+{{ define "tool_list" }}
+<div class="tool-grid">
+    {{ range .Tools }}
+        {{ template "tool_card" dict "Tool" . "T" $.T "L" $.L }}
+    {{ else }}
+    <div class="col-span-full text-center text-slate-500 py-8">
+        No tools found matching your search.
+    </div>
+    {{ end }}
+</div>
+{{ end }}

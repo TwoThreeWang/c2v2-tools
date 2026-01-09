@@ -1,0 +1,30 @@
+{{ define "header" }}
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between" aria-label="Global Navigation">
+        <a href="{{ call .L "/" }}" class="text-xl font-bold tracking-tight text-indigo-600">
+            {{ call .T "app_name" }}
+        </a>
+        
+        <div class="flex items-center gap-6">
+            <!-- 内部链接 -->
+            <ul class="hidden md:flex gap-4 text-sm font-medium text-slate-600">
+                <li><a href="{{ call .L "/" }}#popular" class="hover:text-indigo-600">{{ call .T "nav_popular" }}</a></li>
+                <li><a href="/sitemap.xml" class="hover:text-indigo-600">{{ call .T "nav_sitemap" }}</a></li>
+            </ul>
+            
+            <!-- 语言切换器 -->
+            <div class="flex items-center border-l pl-4 border-slate-200 text-xs font-semibold uppercase tracking-wider">
+                {{ if eq .lang "en" }}
+                    <span class="text-indigo-600 cursor-default">EN</span>
+                    <span class="mx-2 text-slate-300">|</span>
+                    <a href="{{ call .SwitchLangLink "zh" }}" class="text-slate-400 hover:text-indigo-600">ZH</a>
+                {{ else }}
+                    <a href="{{ call .SwitchLangLink "en" }}" class="text-slate-400 hover:text-indigo-600">EN</a>
+                    <span class="mx-2 text-slate-300">|</span>
+                    <span class="text-indigo-600 cursor-default">ZH</span>
+                {{ end }}
+            </div>
+        </div>
+    </nav>
+</header>
+{{ end }}
