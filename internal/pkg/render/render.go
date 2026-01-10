@@ -3,9 +3,10 @@ package render
 import (
 	"c2v2/internal/pkg/i18n"
 	"encoding/json"
-	"github.com/gin-gonic/gin"
 	"html/template"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Helper struct {
@@ -65,7 +66,7 @@ func (h *Helper) HTML(c *gin.Context, code int, name string, data gin.H) {
 	// 这里硬编码支持的语言，实际项目中可从 i18n 配置获取
 	supportedLangs := []string{"en", "zh"}
 	hreflangs := make(map[string]string)
-	
+
 	for _, l := range supportedLangs {
 		path := cleanPath
 		if l != "en" {
@@ -84,7 +85,7 @@ func (h *Helper) HTML(c *gin.Context, code int, name string, data gin.H) {
 	if v, ok := data["SchemaData"]; ok {
 		jsonBytes, err := json.Marshal(v)
 		if err == nil {
-			data["SchemaJSON"] = template.HTML(jsonBytes)
+			data["SchemaJSON"] = template.JS(jsonBytes)
 		}
 	}
 

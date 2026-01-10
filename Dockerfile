@@ -9,14 +9,17 @@ RUN apk add --no-cache git
 # 复制 go mod 文件
 COPY go.mod go.sum ./
 
-# 下载依赖
-RUN go mod download
+# 使用 BuildKit 缓存挂载加速依赖下载
+RUN --mount=type=cache,target=/go/pkg/mod \
+    go mod download
 
 # 复制源代码
 COPY . .
 
-# 构建应用
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/server
+# 使用 BuildKit 缓存挂载加速编译过程
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/server
 
 # 运行阶段
 FROM alpine:latest
