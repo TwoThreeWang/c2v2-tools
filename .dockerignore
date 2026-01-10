@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# 构建产物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# 测试文件
+*_test.go
+*.test
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 文档
+*.md
+!README.md
+
+# 其他
+.env
+.DS_Store
+Thumbs.db

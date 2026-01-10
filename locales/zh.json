@@ -3,7 +3,7 @@
     "meta_title_index": "C2V2 在线工具箱 - 免费开发者工具",
     "meta_desc_index": "集合了 Base64 转换、JSON 格式化等高性能在线开发者工具。",
     "footer_rights": "C2V2 工具箱. 版权所有.",
-    
+
     "nav_home": "首页",
     "nav_popular": "热门工具",
     "nav_sitemap": "站点地图",
@@ -16,28 +16,28 @@
     "hero_title": "免费开发者工具箱",
     "hero_subtitle": "一系列隐私优先的在线工具。快速、安全，所有处理均在您的浏览器本地完成。",
     "search_placeholder": "搜索工具...",
-    
+
     "cat_encoders_title": "编码与解码",
     "cat_encoders_desc": "安全转换数据格式，无需上传数据。调试 Auth Token 和 API 的得力助手。",
     "cat_formatters_title": "代码格式化",
     "cat_formatters_desc": "美化并验证您的代码片段。处理 JSON、XML 及各种数据结构的必备工具。",
 
     "use_tool_btn": "使用工具",
-    
+
     "seo_why_title": "为什么选择我们的在线工具？",
     "seo_why_p1": "我们提供一系列**隐私优先的在线工具**。无论您需要 Base64 转换器还是 JSON 格式化工具，我们都能提供快速且安全的解决方案。所有数据处理均在您的浏览器本地完成。",
     "seo_why_p2": "我们支持**中英文**多语言，服务全球用户。我们的工具针对移动端和桌面端进行了优化，无需注册即可在所有设备上获得流畅体验。",
-    
+
     "tool_base64_title": "Base64 编码/解码",
     "tool_base64_desc": "免费在线工具，实现文本与 Base64 互相转换。快速、安全，浏览器本地处理。",
     "tool_base64_page_title": "Base64 编码与解码 - 在线转换工具",
     "tool_base64_page_desc": "即时将文本转换为 Base64 字符串，或进行反向解码。支持 UTF-8。隐私优先的开发者工具。",
-    
+
     "nav_dev_tools": "开发者工具",
     "breadcrumb_home": "首页",
     "stats_chars": "字符",
     "stats_bytes": "字节",
-    
+
     "b64_input_label": "输入内容",
     "b64_input_placeholder": "在此输入或粘贴内容...",
     "b64_output_label": "转换结果",
@@ -66,7 +66,7 @@
 
         "tool_json_page_desc": "最佳在线 JSON 格式化工具，美化、压缩并校验 JSON 数据。隐私优先，浏览器本地运行。",
 
-    
+
 
         "json_input_label": "JSON 数据",
 
@@ -89,7 +89,7 @@
 
         "json_clear": "清空",
 
-    
+
 
         "json_seo_h2_what": "什么是 JSON？",
 
@@ -114,12 +114,12 @@
         "json_layout_toggle_title": "切换布局",
         "json_processing": "处理中...",
         "json_result_placeholder": "结果将在此显示...",
-        
+
         "tool_html_title": "HTML 格式化与预览",
         "tool_html_desc": "免费在线工具，用于格式化、压缩和预览 HTML 代码。即时校验语法并美化标记。",
         "tool_html_page_title": "HTML 格式化、压缩与预览 - 在线工具",
         "tool_html_page_desc": "最佳在线 HTML 格式化工具，美化、压缩并预览 HTML 代码。隐私优先，浏览器本地运行。",
-        
+
         "html_input_label": "HTML 代码",
         "html_input_placeholder": "在此粘贴 HTML...",
         "html_output_label": "格式化 HTML",
@@ -142,7 +142,7 @@
         "html_input_empty": "请先输入 HTML 代码",
         "html_preview": "预览",
         "processing": "处理中...",
-        
+
         "html_seo_title": "什么是 HTML 格式化？",
         "html_seo_description": "HTML 格式化让您的标记代码更易读和可维护。我们的工具帮助您美化杂乱的 HTML，为生产环境压缩代码，或转义特殊字符以安全显示。",
         "html_seo_content": "HTML（超文本标记语言）是创建网页的标准标记语言。正确格式化的 HTML 对于可维护性、调试和协作至关重要。我们的 HTML 格式化工具帮助您通过适当的缩进整理杂乱的代码，校验语法以尽早发现错误，并实时预览您的 HTML 以查看其在浏览器中的渲染效果。无论您是在清理生成的 HTML、准备生产代码，还是教授 Web 开发，我们的工具都提供隐私优先的解决方案，所有处理都在您的浏览器本地完成。",
@@ -154,7 +154,7 @@
         "html_seo_faq_1_a": "HTML 格式化提高了代码可读性，使调试更容易，帮助识别语法错误，确保一致的编码标准，并使协作更高效。格式良好的代码对屏幕阅读器也更友好，更容易长期维护。",
         "html_seo_faq_2_q": "格式化会影响 HTML 性能吗？",
         "html_seo_faq_2_a": "格式化后的 HTML 本身不会影响运行时性能，但压缩后的 HTML（我们的工具也提供）可以通过减小文件大小来略微提高加载时间。主要好处是开发效率 - 可读的代码更容易优化和调试，从而获得更好的整体性能。",
-        
+
         "about_title": "关于 C2V2 工具箱",
         "about_desc": "了解我们的使命以及开发者工具箱背后的技术。",
         "about_p1": "C2V2 工具箱是一个免费、高性能的在线开发者工具集合。我们的使命是为开发者提供快速、安全且易于使用的工具，在不牺牲隐私的前提下提高生产力。",
@@ -163,7 +163,7 @@
         "about_li_privacy": "隐私优先：尽可能在本地处理数据。",
         "about_li_speed": "高性能：轻量级且加载迅速。",
         "about_li_free": "100% 免费：无需注册，无隐藏费用。",
-        
+
         "privacy_title": "隐私政策",
         "privacy_desc": "您的隐私是我们的首要任务。了解我们如何处理您的数据。",
         "privacy_p1": "在 C2V2 工具箱，我们非常重视您的隐私。本政策概述了我们保护您数据的承诺。",
@@ -171,7 +171,7 @@
         "privacy_p_local": "我们的大部分工具（如 Base64 和 HTML 格式化）完全在您的浏览器中处理数据。您的输入数据永远不会发送到我们的服务器。",
         "privacy_h2_logs": "服务器日志",
         "privacy_p_logs": "与大多数网站一样，我们可能会出于安全和分析目的收集标准服务器日志（IP 地址、浏览器类型等）。我们不会将此信息出售给第三方。",
-        
+
         "terms_title": "服务条款",
         "terms_desc": "在使用我们的工具之前，请仔细阅读我们的条款。",
         "terms_p1": "通过使用 C2V2 工具箱，即表示您同意遵守以下条款。",
@@ -179,12 +179,38 @@
         "terms_p_usage": "您可以将我们的工具用于个人或商业目的。您同意不将本服务用于任何非法活动或破坏他人的服务。",
         "terms_h2_disclaimer": "免责声明",
         "terms_p_disclaimer": "我们的工具按“原样”提供，不提供任何保证。虽然我们力求准确，但对于因使用我们的工具而导致的任何数据丢失或错误，我们概不负责。",
-        
+
         "contact_title": "联系我们",
         "contact_desc": "有问题或反馈吗？我们很乐意听到您的声音。",
         "contact_p1": "我们一直在寻求改进我们的工具。如果您有建议、错误报告或只是想打个招呼，请随时联系我们。",
-        "contact_email": "电子邮件: support@c2v2.tools",
-        "contact_github": "GitHub: github.com/c2v2/tools"
+        "contact_email": "电子邮件: support@c2v2.com",
+        "contact_github": "GitHub: github.com/TwoThreeWang/c2v2-tools",
+
+        "tool_css_title": "CSS 格式化与压缩",
+        "tool_css_desc": "免费在线工具，用于美化、压缩和净化 CSS 代码。即时清理、优化您的样式表。",
+        "tool_css_page_title": "CSS 格式化、压缩与净化 - 在线工具",
+        "tool_css_page_desc": "最佳在线 CSS 格式化工具，美化、压缩并净化 CSS 代码。隐私优先，浏览器本地运行。",
+
+        "css_input_label": "CSS 代码",
+        "css_input_placeholder": "在此粘贴 CSS...",
+        "css_beautify": "美化",
+        "css_minify": "压缩",
+        "css_purify": "净化",
+        "css_clear": "清空",
+        "css_copy": "复制",
+        "css_stats_empty": "输入 CSS 代码以查看统计信息",
+        "css_result_placeholder": "结果将在此显示...",
+        "stats_lines": "行",
+
+        "css_seo_h2_what": "什么是 CSS 格式化？",
+        "css_seo_p_what": "CSS 格式化是组织和结构化 CSS 代码以使其更易读和可维护的过程。这包括适当的缩进、一致的间距和规则的逻辑组织。格式良好的 CSS 更容易调试、协作和长期维护。",
+        "css_seo_h2_use": "什么时候使用 CSS 格式化？",
+        "css_seo_p_use": "在处理杂乱或压缩的代码时使用 CSS 美化。在需要减小文件大小用于生产环境时使用 CSS 压缩。在需要清理代码、删除注释和多余空白但保持每个规则一行以便阅读时使用 CSS 净化。",
+        "css_seo_faq_1_q": "压缩和净化有什么区别？",
+        "css_seo_faq_1_a": "压缩会删除所有空白和注释以创建最小的文件大小。净化会删除注释和多余空白，但保持每个 CSS 规则独占一行，在保持紧凑的同时提供更好的可读性。",
+        "css_seo_faq_2_q": "CSS 格式化会影响性能吗？",
+        "css_seo_faq_2_a": "压缩后的 CSS 可以通过减小文件大小略微提高页面加载速度。美化或净化后的 CSS 不会影响运行时性能，但通过更好的代码可读性提高开发效率。",
+        "css_input_empty": "请输入一些 CSS 代码。",
+        "copied": "已复制！"
     }
 
-    

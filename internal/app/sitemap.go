@@ -1,9 +1,11 @@
 package app
 
 import (
+	"c2v2/internal/tools"
 	"encoding/xml"
-	"github.com/gin-gonic/gin"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 // URLSet 是 sitemap 的根节点
@@ -25,14 +27,14 @@ func SitemapHandler(domain string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var urls []URL
 		supportedLangs := []string{"en", "zh"}
-		
-		// 遍历所有工具路径
-		for _, route := range ToolRoutes {
+
+		// 从统一注册中心获取所有路由
+		for _, route := range tools.AllRoutes() {
 			// 遍历所有语言
 			for _, lang := range supportedLangs {
 				// 构建完整 URL
 				var fullURL string
-				
+
 				// 处理路径逻辑
 				// route == "" 是首页
 				path := route
@@ -68,7 +70,7 @@ func SitemapHandler(domain string) gin.HandlerFunc {
 
 		// 生成 XML
 		urlSet := URLSet{URLs: urls}
-		
+
 		c.Header("Content-Type", "application/xml")
 		output, _ := xml.MarshalIndent(urlSet, "", "  ")
 		c.Writer.Write([]byte(xml.Header + string(output)))

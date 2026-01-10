@@ -41,7 +41,7 @@ C2V2 is a lightweight, efficient web-based toolbox designed for developers. It p
     go run cmd/server/main.go
     ```
 
-4.  Open your browser and navigate to `http://localhost:8080`.
+4.  Open your browser and navigate to `http://localhost:5006`.
 
 ## 📁 Project Structure
 
