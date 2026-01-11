@@ -6,7 +6,7 @@
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
     {{ template "header" . }}
 
-    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         <header class="mb-10 text-center">
             <h1 class="text-3xl font-extrabold text-slate-900 mb-4">{{ call .T "privacy_title" }}</h1>
             <p class="text-slate-600 leading-relaxed">{{ call .T "privacy_desc" }}</p>
@@ -25,5 +25,6 @@
 
     {{ template "footer" . }}
 </body>
+
 </html>
 {{ end }}

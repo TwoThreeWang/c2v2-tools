@@ -7,6 +7,8 @@
     <!-- SEO 关键标签 -->
     <title>{{ call .T .title }}</title>
     <meta name="description" content="{{ call .T .description }}">
+    {{ if .keywords }}
+    <meta name="keywords" content="{{ call .T .keywords }}">{{ end }}
     <link rel="canonical" href="{{ .Canonical }}">
 
     <!-- Favicon -->
@@ -19,7 +21,7 @@
     <meta property="og:title" content="{{ call .T .title }}">
     <meta property="og:description" content="{{ call .T .description }}">
     <meta property="og:url" content="{{ .Canonical }}">
-    <meta property="og:site_name" content="{{ call .T " app_name" }}">
+    <meta property="og:site_name" content="{{ call .T "app_name" }}">
     <meta property="og:locale" content="{{ if eq .lang " zh" }}zh_CN{{ else }}en_US{{ end }}">
 
     <!-- Twitter Card -->

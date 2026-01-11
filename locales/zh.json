@@ -2,6 +2,7 @@
     "app_name": "C2V2 工具箱",
     "meta_title_index": "C2V2 在线工具箱 - 免费开发者工具",
     "meta_desc_index": "集合了 Base64 转换、JSON 格式化等高性能在线开发者工具。",
+    "meta_keywords_index": "开发者工具, 在线工具, 隐私优先, base64转换, json格式化, html格式化, css压缩",
     "footer_rights": "C2V2 工具箱. 版权所有.",
 
     "nav_home": "首页",
@@ -32,6 +33,7 @@
     "tool_base64_desc": "免费在线工具，实现文本与 Base64 互相转换。快速、安全，浏览器本地处理。",
     "tool_base64_page_title": "Base64 编码与解码 - 在线转换工具",
     "tool_base64_page_desc": "即时将文本转换为 Base64 字符串，或进行反向解码。支持 UTF-8。隐私优先的开发者工具。",
+    "tool_base64_keywords": "base64编码, base64解码, base64转换, 在线base64, base64转码",
 
     "nav_dev_tools": "开发者工具",
     "breadcrumb_home": "首页",
@@ -65,7 +67,7 @@
         "tool_json_page_title": "JSON 格式化、校验与压缩 - 在线工具",
 
         "tool_json_page_desc": "最佳在线 JSON 格式化工具，美化、压缩并校验 JSON 数据。隐私优先，浏览器本地运行。",
-
+    "tool_json_keywords": "json格式化, json校验, json压缩, json美化, json调试, 在线json工具",
 
 
         "json_input_label": "JSON 数据",
@@ -119,6 +121,7 @@
         "tool_html_desc": "免费在线工具，用于格式化、压缩和预览 HTML 代码。即时校验语法并美化标记。",
         "tool_html_page_title": "HTML 格式化、压缩与预览 - 在线工具",
         "tool_html_page_desc": "最佳在线 HTML 格式化工具，美化、压缩并预览 HTML 代码。隐私优先，浏览器本地运行。",
+    "tool_html_keywords": "html格式化, html压缩, html美化, html预览, 在线html工具",
 
         "html_input_label": "HTML 代码",
         "html_input_placeholder": "在此粘贴 HTML...",
@@ -163,6 +166,7 @@
         "about_li_privacy": "隐私优先：尽可能在本地处理数据。",
         "about_li_speed": "高性能：轻量级且加载迅速。",
         "about_li_free": "100% 免费：无需注册，无隐藏费用。",
+    "meta_keywords_about": "关于c2v2工具箱, 隐私优先开发者工具, 在线实用工具",
 
         "privacy_title": "隐私政策",
         "privacy_desc": "您的隐私是我们的首要任务。了解我们如何处理您的数据。",
@@ -171,6 +175,7 @@
         "privacy_p_local": "我们的大部分工具（如 Base64 和 HTML 格式化）完全在您的浏览器中处理数据。您的输入数据永远不会发送到我们的服务器。",
         "privacy_h2_logs": "服务器日志",
         "privacy_p_logs": "与大多数网站一样，我们可能会出于安全和分析目的收集标准服务器日志（IP 地址、浏览器类型等）。我们不会将此信息出售给第三方。",
+    "meta_keywords_privacy": "隐私政策, 数据隐私, 本地处理",
 
         "terms_title": "服务条款",
         "terms_desc": "在使用我们的工具之前，请仔细阅读我们的条款。",
@@ -179,17 +184,20 @@
         "terms_p_usage": "您可以将我们的工具用于个人或商业目的。您同意不将本服务用于任何非法活动或破坏他人的服务。",
         "terms_h2_disclaimer": "免责声明",
         "terms_p_disclaimer": "我们的工具按“原样”提供，不提供任何保证。虽然我们力求准确，但对于因使用我们的工具而导致的任何数据丢失或错误，我们概不负责。",
+    "meta_keywords_terms": "服务条款, 使用条款",
 
         "contact_title": "联系我们",
         "contact_desc": "有问题或反馈吗？我们很乐意听到您的声音。",
         "contact_p1": "我们一直在寻求改进我们的工具。如果您有建议、错误报告或只是想打个招呼，请随时联系我们。",
         "contact_email": "电子邮件: support@c2v2.com",
         "contact_github": "GitHub: github.com/TwoThreeWang/c2v2-tools",
+    "meta_keywords_contact": "联系我们, 支持, 反馈",
 
         "tool_css_title": "CSS 格式化与压缩",
         "tool_css_desc": "免费在线工具，用于美化、压缩和净化 CSS 代码。即时清理、优化您的样式表。",
         "tool_css_page_title": "CSS 格式化、压缩与净化 - 在线工具",
         "tool_css_page_desc": "最佳在线 CSS 格式化工具，美化、压缩并净化 CSS 代码。隐私优先，浏览器本地运行。",
+    "tool_css_keywords": "css格式化, css压缩, css美化, css净化, 在线css工具",
 
         "css_input_label": "CSS 代码",
         "css_input_placeholder": "在此粘贴 CSS...",
@@ -217,6 +225,7 @@
         "tool_heic_desc": "免费在线 HEIC 转 JPG/PNG 工具。100% 本地转换，保护隐私，无需上传。",
         "tool_heic_page_title": "免费在线 HEIC 转 JPG/PNG 工具 - HEIC 图片查看器与转换器",
         "tool_heic_page_desc": "免费在线批量将 HEIC 转换为 JPG 或 PNG。内置 HEIC 查看器。无需上传云端，本地转换保护隐私。比 CloudConvert 更安全高效。",
+    "tool_heic_keywords": "heic转换, heic转jpg, heic转png, 免费heic转换, 在线heic工具",
 
         "heic_drop_title": "拖入 HEIC 文件或点击上传",
         "heic_drop_subtitle": "支持批量转换",
@@ -244,6 +253,40 @@
         "heic_seo_faq_1_q": "什么是 HEIC 文件？",
         "heic_seo_faq_1_a": "HEIC 是 Apple 设备使用的一种高效图像格式。相比 JPG，它在相同画质下体积更小，但在非 Apple 设备上兼容性较差。",
         "heic_seo_faq_2_q": "使用此免费在线工具安全吗？",
-        "heic_seo_faq_2_a": "绝对安全！与 CloudConvert 等云端工具不同，本工具利用 WebAssembly 技术，所有转换过程均在您的浏览器本地完成，图片绝不会上传到服务器。"
-    }
+        "heic_seo_faq_2_a": "是的！不同于 CloudConvert 或其他云端工具，我们在您的浏览器本地处理照片。照片绝不会上传到任何服务器，确保 100% 隐私。",
 
+        "tool_password_title": "安全密码生成器",
+        "tool_password_desc": "在您的浏览器中本地生成强效、安全、随机的密码。100% 客户端运行，确保最高安全性。",
+        "tool_password_page_title": "随机密码生成器 - 强密码生成工具 (免费)",
+        "tool_password_page_desc": "使用我们的免费在线工具即时生成强效、安全的密码。支持自定义长度和字符类型。100% 客户端本地执行。",
+        "tool_password_keywords": "密码生成器, 随机密码, 强密码生成, 在线密码生成, 安全密码, 免费密码工具",
+
+        "pwd_length": "密码长度",
+        "pwd_options": "选项",
+        "pwd_opt_uppercase": "大写字母 (A-Z)",
+        "pwd_opt_lowercase": "小写字母 (a-z)",
+        "pwd_opt_numbers": "数字 (0-9)",
+        "pwd_opt_symbols": "符号 (!@#$)",
+        "pwd_opt_easy_read": "易读模式 (不含 l, 1, I, O, 0)",
+        "pwd_generate_btn": "生成密码",
+        "pwd_copy_btn": "复制",
+        "pwd_copied": "已复制!",
+        "pwd_history": "历史记录 (最近 3 个)",
+        "pwd_strength": "强度",
+        "pwd_strength_weak": "弱",
+        "pwd_strength_good": "良",
+        "pwd_strength_strong": "强",
+        "pwd_client_side_note": "此工具 100% 在您的浏览器中运行。密码在本地生成，绝不会发送到任何服务器。",
+
+        "pwd_seo_h2_secure": "为什么使用安全密码生成器？",
+        "pwd_seo_p_secure": "使用弱密码是数据泄露的主要原因。我们的安全密码生成器创建无法猜测的加密强随机密码。它使用浏览器内置的 `window.crypto` API 来获得最大熵值。",
+        "pwd_seo_h2_features": "功能特点",
+        "pwd_seo_li_custom": "自定义长度和字符集。",
+        "pwd_seo_li_easy": "易读模式，避免歧义字符。",
+        "pwd_seo_li_privacy": "100% 客户端执行。数据绝不离开您的设备。",
+        "pwd_seo_faq_1_q": "在线生成密码安全吗？",
+        "pwd_seo_faq_1_a": "是的，前提是工具在本地运行。我们的密码生成器完全使用 JavaScript 在您的浏览器中运行。没有任何数据会发送到我们的服务器。您甚至可以断开网络使用它！",
+
+        "cat_security_title": "安全工具",
+        "cat_security_desc": "保护您数字生活的基本工具。生成强密码、哈希值等。"
+    }

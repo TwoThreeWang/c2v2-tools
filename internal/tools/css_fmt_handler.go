@@ -69,6 +69,7 @@ func (t *CSSFmtTool) Handler(c *gin.Context) {
 	t.renderHelper.HTML(c, http.StatusOK, "css_fmt.html", gin.H{
 		"title":       "tool_css_page_title",
 		"description": "tool_css_page_desc",
+		"keywords":    "tool_css_keywords",
 		"SchemaData":  graphSchema,
 	})
 }

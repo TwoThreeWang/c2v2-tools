@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html lang="{{ .lang }}">
 {{ template "head" . }}
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
     {{ template "header" . }}
 
     <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
-        <div class="max-w-5xl mx-auto">
-            
+        <div class="mx-auto">
+
             <!-- Breadcrumbs -->
             <nav class="flex text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -23,16 +23,21 @@
                     </li>
                     <li>
                         <div class="flex items-center">
-                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
-                            <a href="{{ call .L "/" }}#popular" class="ml-1 hover:text-indigo-600 transition-colors">{{ call .T "nav_dev_tools" }}</a>
+                            <a href="{{ call .L "/" }}#popular" class="ml-1 hover:text-indigo-600 transition-colors">{{
+                                call .T "nav_dev_tools" }}</a>
                         </div>
                     </li>
                     <li aria-current="page">
                         <div class="flex items-center">
-                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <span class="ml-1 text-slate-700 font-medium">JSON</span>
                         </div>
@@ -54,86 +59,114 @@
                         <div class="flex flex-wrap items-center justify-between gap-3">
                             <!-- Primary Actions -->
                             <div class="flex flex-wrap gap-2">
-                                <button type="submit" form="json-form" name="action" value="format" class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-100 transition-colors flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                                <button type="submit" form="json-form" name="action" value="format"
+                                    class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-100 transition-colors flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                                    </svg>
                                     {{ call .T "json_action_format" }}
                                 </button>
-                                <button type="submit" form="json-form" name="action" value="minify" class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                <button type="submit" form="json-form" name="action" value="minify"
+                                    class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                        </path>
+                                    </svg>
                                     {{ call .T "json_action_minify" }}
                                 </button>
-                                <button type="submit" form="json-form" name="action" value="validate" class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
-                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                <button type="submit" form="json-form" name="action" value="validate"
+                                    class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
                                     {{ call .T "json_action_validate" }}
                                 </button>
-                                
+
                                 <!-- Smart Conversions Dropdown -->
                                 <div class="relative" x-data="{ open: false }">
-                                    <button type="button" @click="open = !open" class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
-                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+                                    <button type="button" @click="open = !open"
+                                        class="px-4 py-2 bg-white text-slate-700 border border-slate-300 text-sm font-semibold rounded-lg hover:bg-slate-50 hover:text-indigo-600 focus:ring-4 focus:ring-slate-100 transition-colors flex items-center">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path>
+                                        </svg>
                                         {{ call .T "json_convert_dropdown" }}
                                     </button>
-                                    <div x-show="open" @click.away="open = false" class="absolute top-full left-0 mt-1 w-48 bg-white border border-slate-200 rounded-lg shadow-lg z-10">
-                                        <button type="submit" form="json-form" name="action" value="to_go" class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">
+                                    <div x-show="open" @click.away="open = false"
+                                        class="absolute top-full left-0 mt-1 w-48 bg-white border border-slate-200 rounded-lg shadow-lg z-10">
+                                        <button type="submit" form="json-form" name="action" value="to_go"
+                                            class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">
                                             JSON → Go Struct
                                         </button>
-                                        <button type="submit" form="json-form" name="action" value="to_yaml" class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">
+                                        <button type="submit" form="json-form" name="action" value="to_yaml"
+                                            class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 hover:text-indigo-600 transition-colors">
                                             JSON → YAML
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Secondary Actions -->
                             <div class="flex items-center gap-2">
-                                <button type="button" onclick="toggleLayout()" class="px-3 py-2 text-slate-600 hover:text-indigo-600 transition-colors" title="{{ call .T "json_layout_toggle_title" }}">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                                <button type="button" onclick="toggleLayout()"
+                                    class="px-3 py-2 text-slate-600 hover:text-indigo-600 transition-colors"
+                                    title="{{ call .T "json_layout_toggle_title" }}">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                                        </path>
+                                    </svg>
                                 </button>
-                                <button type="reset" form="json-form" onclick="clearAll()" class="px-3 py-2 text-xs text-slate-500 hover:text-red-500 font-medium transition-colors">
+                                <button type="reset" form="json-form" onclick="clearAll()"
+                                    class="px-3 py-2 text-xs text-slate-500 hover:text-red-500 font-medium transition-colors">
                                     {{ call .T "json_clear" }}
                                 </button>
-                                <span id="loading-indicator" class="htmx-indicator text-indigo-600 text-xs font-medium animate-pulse">
+                                <span id="loading-indicator"
+                                    class="htmx-indicator text-indigo-600 text-xs font-medium animate-pulse">
                                     {{ call .T "json_processing" }}
                                 </span>
                             </div>
                         </div>
-                        
+
                         <!-- Validation Status -->
                         <div id="validation-status" class="text-xs font-medium"></div>
                     </div>
                 </div>
-                
+
                 <!-- Editor Areas -->
-                <form id="json-form" hx-post="{{ call .L "/json-fmt" }}" hx-target="#result-area" hx-indicator="#loading-indicator" hx-on::after-request="handleResponse(event)" class="p-5">
+                <form id="json-form" hx-post="{{ call .L "/json-fmt" }}" hx-target="#result-area"
+                    hx-indicator="#loading-indicator" hx-on::after-request="handleResponse(event)" class="p-5">
                     <div id="editor-container" class="grid md:grid-cols-1 gap-4">
                         <!-- Input Area -->
                         <div class="flex flex-col relative">
-                            <label for="input-json" class="block text-sm font-semibold text-slate-700 mb-2">{{ call .T "json_input_label" }}</label>
+                            <label for="input-json" class="block text-sm font-semibold text-slate-700 mb-2">{{ call .T
+                                "json_input_label" }}</label>
                             <div class="relative">
                                 <!-- Line Numbers Editor -->
-                                <div class="flex w-full min-h-[400px] rounded-lg border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all">
+                                <div
+                                    class="flex w-full min-h-[400px] rounded-lg border border-slate-300 bg-slate-50 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-500 focus-within:border-indigo-500 transition-all">
                                     <!-- Line Numbers -->
-                                    <div class="flex flex-col bg-slate-100 border-r border-slate-200 select-none" style="min-width: 3rem;">
-                                        <div id="input-line-numbers" class="px-2 py-4 text-right text-xs text-slate-500 font-mono leading-6">
+                                    <div class="flex flex-col bg-slate-100 border-r border-slate-200 select-none"
+                                        style="min-width: 3rem;">
+                                        <div id="input-line-numbers"
+                                            class="px-2 py-4 text-right text-xs text-slate-500 font-mono leading-6">
                                             1<br>
                                         </div>
                                     </div>
                                     <!-- Textarea -->
-                                    <textarea 
-                                        id="input-json"
-                                        name="input" 
-                                        class="flex-1 p-4 pb-8 rounded-r-lg bg-transparent font-mono text-sm resize-none outline-none leading-6" 
+                                    <textarea id="input-json" name="input"
+                                        class="flex-1 p-4 pb-8 rounded-r-lg bg-transparent font-mono text-sm resize-none outline-none leading-6"
                                         placeholder="{{ call .T "json_input_placeholder" }}"
                                         oninput="updateInputStats(this); validateJson(this); updateLineNumbers(this, 'input-line-numbers')"
-                                        onscroll="syncScroll(this, 'input-line-numbers')"
-                                        hx-post="{{ call .L "/json-fmt" }}"
-                                        hx-trigger="keyup changed delay:500ms"
-                                        hx-target="#validation-status"
-                                        hx-vals='{"action": "validate"}'
-                                    ></textarea>
+                                        onscroll="syncScroll(this, 'input-line-numbers')" hx-post="{{ call .L "/json-fmt" }}" hx-trigger="keyup changed delay:500ms"
+                                        hx-target="#validation-status" hx-vals='{"action": "validate"}'></textarea>
                                 </div>
                                 <!-- Stats Bar -->
-                                <div id="input-stats" class="absolute bottom-2 right-2 px-2 py-1 bg-slate-100/80 backdrop-blur rounded text-[10px] text-slate-500 font-mono pointer-events-none">
+                                <div id="input-stats"
+                                    class="absolute bottom-2 right-2 px-2 py-1 bg-slate-100/80 backdrop-blur rounded text-[10px] text-slate-500 font-mono pointer-events-none">
                                     0 {{ call .T "stats_chars" }} | 0 {{ call .T "stats_bytes" }}
                                 </div>
                             </div>
@@ -141,10 +174,12 @@
 
                         <!-- Output Area -->
                         <div class="flex flex-col">
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">{{ call .T "json_output_label" }}</label>
-                            
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">{{ call .T
+                                "json_output_label" }}</label>
+
                             <!-- Result Container -->
-                            <div id="result-area" class="flex-grow w-full min-h-[400px] relative rounded-lg border border-slate-200 bg-slate-50 overflow-hidden group">
+                            <div id="result-area"
+                                class="flex-grow w-full min-h-[400px] relative rounded-lg border border-slate-200 bg-slate-50 overflow-hidden group">
                                 <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">
                                     {{ call .T "json_result_placeholder" }}
                                 </div>
@@ -155,30 +190,7 @@
             </div>
 
             <!-- SEO Content Section -->
-        {{ template "seo_content_section" (dict 
-            "content_blocks" (list 
-                (dict 
-                    "icon_path" "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    "title" (call .T "json_seo_h2_what")
-                    "content" (call .T "json_seo_p_what")
-                )
-                (dict 
-                    "icon_path" "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    "title" (call .T "json_seo_h2_why")
-                    "content" (call .T "json_seo_p_why")
-                )
-            )
-            "faq_items" (list 
-                (dict 
-                    "question" (call .T "json_seo_faq_1_q")
-                    "answer" (call .T "json_seo_faq_1_a")
-                )
-                (dict 
-                    "question" (call .T "json_seo_faq_2_q")
-                    "answer" (call .T "json_seo_faq_2_a")
-                )
-            )
-        ) }}
+            {{ template "seo_content_section" (dict "content_blocks" (list (dict "icon_path" "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" "title" (call .T "json_seo_h2_what") "content" (call .T "json_seo_p_what")) (dict "icon_path" "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" "title" (call .T "json_seo_h2_why") "content" (call .T "json_seo_p_why"))) "faq_items" (list (dict "question" (call .T "json_seo_faq_1_q") "answer" (call .T "json_seo_faq_1_a")) (dict "question" (call .T "json_seo_faq_2_q") "answer" (call .T "json_seo_faq_2_a")))) }}
         </div>
     </main>
 
@@ -189,7 +201,7 @@
             const text = el.value || '';
             const charCount = [...text].length;
             const byteCount = new Blob([text]).size;
-            
+
             const statsEl = document.getElementById('input-stats');
             if (statsEl) {
                 statsEl.innerText = `${charCount} {{ call .T "stats_chars" }} | ${byteCount} {{ call .T "stats_bytes" }}`;
@@ -216,18 +228,18 @@
             const outputContent = document.getElementById('output-content');
             const lineNumbers = document.getElementById('output-line-numbers');
             if (!outputContent || !lineNumbers) return;
-            
+
             const text = outputContent.textContent || '';
             const lines = text.split('\n');
             const lineCount = lines.length;
-            
+
             // 生成行号HTML - 使用<br>标签创建换行
             let lineNumbersHTML = '';
             for (let i = 1; i <= lineCount; i++) {
                 if (i > 1) lineNumbersHTML += '<br>';
                 lineNumbersHTML += i;
             }
-            
+
             lineNumbers.innerHTML = lineNumbersHTML;
         }
 
@@ -254,17 +266,17 @@
         function updateLineNumbers(textarea, lineNumbersId) {
             const lineNumbers = document.getElementById(lineNumbersId);
             if (!lineNumbers) return;
-            
+
             const lines = textarea.value.split('\n');
             const lineCount = lines.length;
-            
+
             // 生成行号HTML - 使用<br>标签创建换行
             let lineNumbersHTML = '';
             for (let i = 1; i <= lineCount; i++) {
                 if (i > 1) lineNumbersHTML += '<br>';
                 lineNumbersHTML += i;
             }
-            
+
             lineNumbers.innerHTML = lineNumbersHTML;
         }
 
@@ -272,10 +284,11 @@
         function syncScroll(textarea, lineNumbersId) {
             const lineNumbers = document.getElementById(lineNumbersId);
             if (!lineNumbers) return;
-            
+
             lineNumbers.scrollTop = textarea.scrollTop;
         }
     </script>
 </body>
+
 </html>
 {{ end }}

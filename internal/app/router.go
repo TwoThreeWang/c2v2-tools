@@ -77,6 +77,9 @@ func SetupRouter(i18nMgr *i18n.Manager, cfg *Config) *gin.Engine {
 		"not": func(b bool) bool {
 			return !b
 		},
+		"safe": func(s string) template.HTML {
+			return template.HTML(s)
+		},
 	})
 
 	r.LoadHTMLGlob("templates/**/*")
@@ -100,6 +103,7 @@ Sitemap: ` + domain + `/sitemap.xml
 	htmlTool := tools.NewHTMLFmtTool(renderHelper)
 	cssTool := tools.NewCSSFmtTool(renderHelper)
 	heicTool := tools.NewHeicTool(renderHelper)
+	passwordTool := tools.NewPasswordTool(renderHelper)
 
 	// 从统一注册中心获取工具数据
 	categories := tools.Categories()
@@ -146,6 +150,7 @@ Sitemap: ` + domain + `/sitemap.xml
 			renderHelper.HTML(c, http.StatusOK, "index.html", gin.H{
 				"title":       "meta_title_index",
 				"description": "meta_desc_index",
+				"keywords":    "meta_keywords_index",
 				"Categories":  categories, // 传递分类列表
 			})
 		})
@@ -164,19 +169,20 @@ Sitemap: ` + domain + `/sitemap.xml
 		defaultGroup.POST("/css-fmt", cssTool.Handler)
 		defaultGroup.GET("/heic-to-jpg", heicTool.Handler)
 		defaultGroup.POST("/heic-to-jpg", heicTool.Handler)
+		defaultGroup.GET("/password-generator", passwordTool.Handler)
 
 		// 静态页面路由
 		defaultGroup.GET("/about", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc"})
+			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc", "keywords": "meta_keywords_about"})
 		})
 		defaultGroup.GET("/privacy", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc"})
+			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc", "keywords": "meta_keywords_privacy"})
 		})
 		defaultGroup.GET("/terms", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc"})
+			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc", "keywords": "meta_keywords_terms"})
 		})
 		defaultGroup.GET("/contact", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc"})
+			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc", "keywords": "meta_keywords_contact"})
 		})
 	}
 
@@ -189,6 +195,7 @@ Sitemap: ` + domain + `/sitemap.xml
 			renderHelper.HTML(c, http.StatusOK, "index.html", gin.H{
 				"title":       "meta_title_index",
 				"description": "meta_desc_index",
+				"keywords":    "meta_keywords_index",
 				"Categories":  categories,
 			})
 		})
@@ -207,19 +214,20 @@ Sitemap: ` + domain + `/sitemap.xml
 		langGroup.POST("/css-fmt", cssTool.Handler)
 		langGroup.GET("/heic-to-jpg", heicTool.Handler)
 		langGroup.POST("/heic-to-jpg", heicTool.Handler)
+		langGroup.GET("/password-generator", passwordTool.Handler)
 
 		// 静态页面路由
 		langGroup.GET("/about", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc"})
+			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc", "keywords": "meta_keywords_about"})
 		})
 		langGroup.GET("/privacy", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc"})
+			renderHelper.HTML(c, http.StatusOK, "privacy.html", gin.H{"title": "nav_privacy", "description": "privacy_desc", "keywords": "meta_keywords_privacy"})
 		})
 		langGroup.GET("/terms", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc"})
+			renderHelper.HTML(c, http.StatusOK, "terms.html", gin.H{"title": "nav_terms", "description": "terms_desc", "keywords": "meta_keywords_terms"})
 		})
 		langGroup.GET("/contact", func(c *gin.Context) {
-			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc"})
+			renderHelper.HTML(c, http.StatusOK, "contact.html", gin.H{"title": "nav_contact", "description": "contact_desc", "keywords": "meta_keywords_contact"})
 		})
 	}
 

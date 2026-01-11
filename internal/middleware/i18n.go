@@ -8,6 +8,7 @@ import (
 var supportedLangs = map[string]bool{
 	"en": true,
 	"zh": true,
+	"de": true,
 }
 
 // I18nMiddleware 处理多语言支持

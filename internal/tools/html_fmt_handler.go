@@ -73,6 +73,7 @@ func (t *HTMLFmtTool) Handler(c *gin.Context) {
 		t.renderHelper.HTML(c, http.StatusOK, "html_fmt.html", gin.H{
 			"title":       "tool_html_page_title",
 			"description": "tool_html_page_desc",
+			"keywords":    "tool_html_keywords",
 			"SchemaData":  graphSchema,
 		})
 		return

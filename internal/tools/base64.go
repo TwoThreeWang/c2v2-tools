@@ -2,8 +2,9 @@ package tools
 
 import (
 	"c2v2/internal/pkg/render"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Base64Tool struct {
@@ -21,7 +22,7 @@ func (t *Base64Tool) Handler(c *gin.Context) {
 	}
 
 	// 完整页面渲染
-	
+
 	// 1. SoftwareApplication Schema
 	appSchema := map[string]any{
 		"@type":               "SoftwareApplication",
@@ -37,7 +38,7 @@ func (t *Base64Tool) Handler(c *gin.Context) {
 
 	// 2. FAQPage Schema
 	faqSchema := map[string]any{
-		"@type":    "FAQPage",
+		"@type": "FAQPage",
 		"mainEntity": []map[string]any{
 			{
 				"@type": "Question",
@@ -57,7 +58,7 @@ func (t *Base64Tool) Handler(c *gin.Context) {
 			},
 		},
 	}
-	
+
 	// 组合为 Graph Schema
 	graphSchema := map[string]any{
 		"@context": "https://schema.org",
@@ -67,6 +68,7 @@ func (t *Base64Tool) Handler(c *gin.Context) {
 	t.Render.HTML(c, http.StatusOK, "base64.html", gin.H{
 		"title":       "tool_base64_page_title",
 		"description": "tool_base64_page_desc",
+		"keywords":    "tool_base64_keywords",
 		"SchemaData":  graphSchema,
 	})
 }

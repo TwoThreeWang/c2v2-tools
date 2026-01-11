@@ -18,12 +18,22 @@
                 class="hidden md:flex items-center border-l pl-4 border-slate-200 text-xs font-semibold uppercase tracking-wider">
                 {{ if eq .lang "en" }}
                 <span class="text-indigo-600 cursor-default">EN</span>
-                <span class="mx-2 text-slate-300">|</span>
-                <a href="{{ call .SwitchLangLink "zh" }}" class="text-slate-400 hover:text-indigo-600">ZH</a>
                 {{ else }}
                 <a href="{{ call .SwitchLangLink "en" }}" class="text-slate-400 hover:text-indigo-600">EN</a>
+                {{ end }}
                 <span class="mx-2 text-slate-300">|</span>
+
+                {{ if eq .lang "zh" }}
                 <span class="text-indigo-600 cursor-default">ZH</span>
+                {{ else }}
+                <a href="{{ call .SwitchLangLink "zh" }}" class="text-slate-400 hover:text-indigo-600">ZH</a>
+                {{ end }}
+                <span class="mx-2 text-slate-300">|</span>
+
+                {{ if eq .lang "de" }}
+                <span class="text-indigo-600 cursor-default">DE</span>
+                {{ else }}
+                <a href="{{ call .SwitchLangLink "de" }}" class="text-slate-400 hover:text-indigo-600">DE</a>
                 {{ end }}
             </div>
 
@@ -64,10 +74,20 @@
             <div class="pt-3 border-t border-slate-100 flex gap-4 text-sm font-semibold uppercase tracking-wider">
                 {{ if eq .lang "en" }}
                 <span class="text-indigo-600">EN</span>
-                <a href="{{ call .SwitchLangLink "zh" }}" class="text-slate-400 hover:text-indigo-600">ZH</a>
                 {{ else }}
                 <a href="{{ call .SwitchLangLink "en" }}" class="text-slate-400 hover:text-indigo-600">EN</a>
+                {{ end }}
+
+                {{ if eq .lang "zh" }}
                 <span class="text-indigo-600">ZH</span>
+                {{ else }}
+                <a href="{{ call .SwitchLangLink "zh" }}" class="text-slate-400 hover:text-indigo-600">ZH</a>
+                {{ end }}
+
+                {{ if eq .lang "de" }}
+                <span class="text-indigo-600">DE</span>
+                {{ else }}
+                <a href="{{ call .SwitchLangLink "de" }}" class="text-slate-400 hover:text-indigo-600">DE</a>
                 {{ end }}
             </div>
         </div>

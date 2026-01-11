@@ -7,13 +7,13 @@
     {{ template "header" . }}
 
     <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
-        <div class="max-w-5xl mx-auto">
+        <div class="mx-auto">
 
             <!-- Breadcrumbs -->
             <nav class="flex text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
                     <li class="inline-flex items-center">
-                        <a href="{{ call .L " /" }}" class="hover:text-indigo-600 transition-colors">
+                        <a href="{{ call .L "/" }}" class="hover:text-indigo-600 transition-colors">
                             {{ call .T "breadcrumb_home" }}
                         </a>
                     </li>
@@ -24,7 +24,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
-                            <a href="{{ call .L " /" }}#encoders"
+                            <a href="{{ call .L "/" }}#encoders"
                                 class="ml-1 hover:text-indigo-600 transition-colors">{{ call .T "cat_encoders_title"
                                 }}</a>
                         </div>

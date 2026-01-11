@@ -5,126 +5,159 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
-{{ template "header" . }}
-<main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
-<div class="max-w-5xl mx-auto">
-<nav class="flex text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
-<ol class="inline-flex items-center space-x-1 md:space-x-3">
-<li class="inline-flex items-center"><a href="{{ call .L "/" }}" class="hover:text-indigo-600 transition-colors">{{ call .T "breadcrumb_home" }}</a></li>
-<li><div class="flex items-center"><svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><a href="{{ call .L "/" }}#popular" class="ml-1 hover:text-indigo-600 transition-colors">{{ call .T "nav_dev_tools" }}</a></div></li>
-<li aria-current="page"><div class="flex items-center"><svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg><span class="ml-1 text-slate-700 font-medium">CSS</span></div></li>
-</ol>
-</nav>
-<header class="mb-6 text-center">
-<h1 class="text-2xl font-bold text-slate-900 mb-2">{{ call .T "tool_css_title" }}</h1>
-<p class="text-slate-500 text-sm">{{ call .T "tool_css_desc" }}</p>
-</header>
-<div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
-<form class="p-5">
-<div class="flex flex-wrap gap-2 mb-4">
-<button type="button" onclick="processCSS('beautify')" class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors">{{ call .T "css_beautify" }}</button>
-<button type="button" onclick="processCSS('minify')" class="px-4 py-2 bg-slate-600 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors">{{ call .T "css_minify" }}</button>
-<button type="button" onclick="processCSS('purify')" class="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors">{{ call .T "css_purify" }}</button>
-<button type="button" onclick="clearAll()" class="px-4 py-2 bg-slate-200 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-300 transition-colors">{{ call .T "css_clear" }}</button>
-</div>
-<div class="mb-4">
-<label for="input-css" class="block text-sm font-medium text-slate-700 mb-2">{{ call .T "css_input_label" }}</label>
-<textarea id="input-css" class="w-full p-4 rounded-lg border border-slate-300 font-mono text-sm resize-none outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="{{ call .T "css_input_placeholder" }}" rows="12" oninput="updateStats()"></textarea>
-<div class="mt-2 flex justify-between text-xs text-slate-500">
-<span id="input-stats">{{ call .T "css_stats_empty" }}</span>
-<span id="action-status"></span>
-</div>
-</div>
-<div id="result-area" class="hidden mt-4">
-<div class="flex justify-between items-center mb-2">
-<label class="block text-sm font-medium text-slate-700">{{ call .T "css_result_placeholder" }}</label>
-<button type="button" onclick="copyResult()" class="px-3 py-1 text-xs bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 transition-colors">{{ call .T "css_copy" }}</button>
-</div>
-<pre class="p-4 bg-slate-900 rounded-lg overflow-x-auto max-h-96"><code id="result-code" class="language-css text-sm"></code></pre>
-</div>
-</form>
-</div>
-{{ template "seo_content_section" (dict "content_blocks" (list (dict "icon_path" "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" "title" (call .T "css_seo_h2_what") "content" (call .T "css_seo_p_what")) (dict "icon_path" "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z" "title" (call .T "css_seo_h2_use") "content" (call .T "css_seo_p_use"))) "faq_items" (list (dict "question" (call .T "css_seo_faq_1_q") "answer" (call .T "css_seo_faq_1_a")) (dict "question" (call .T "css_seo_faq_2_q") "answer" (call .T "css_seo_faq_2_a")))) }}
-</div>
-</main>
-{{ template "footer" . }}
-<script>
-function beautifyCSS(css) {
-    if (!css.trim()) return '';
-    let result = css;
-    result = result.replace(/\{/g, ' {\n');
-    result = result.replace(/\}/g, '}\n\n');
-    result = result.replace(/;/g, ';\n');
-    const lines = result.split('\n');
-    let formatted = [];
-    let indent = 0;
-    for (let line of lines) {
-        line = line.trim();
-        if (!line) continue;
-        if (line.startsWith('}')) indent = Math.max(0, indent - 1);
-        formatted.push('    '.repeat(indent) + line);
-        if (line.endsWith('{')) indent++;
-    }
-    return formatted.join('\n');
-}
-function minifyCSS(css) {
-    if (!css.trim()) return '';
-    let result = css;
-    result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-    result = result.replace(/\s+/g, ' ');
-    result = result.replace(/\s*{\s*/g, '{');
-    result = result.replace(/\s*}\s*/g, '}');
-    result = result.replace(/\s*:\s*/g, ':');
-    result = result.replace(/\s*;\s*/g, ';');
-    result = result.replace(/\s*,\s*/g, ',');
-    result = result.replace(/;}/g, '}');
-    return result.trim();
-}
-function purifyCSS(css) {
-    if (!css.trim()) return '';
-    let result = css;
-    result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-    result = result.replace(/\s+/g, ' ');
-    result = result.replace(/}\s*/g, '}\n');
-    result = result.replace(/\s*{\s*/g, ' { ');
-    result = result.replace(/\s*:\s*/g, ': ');
-    result = result.replace(/\s*;\s*/g, '; ');
-    return result.split('\n').map(l => l.trim()).filter(l => l).join('\n');
-}
-function processCSS(action) {
-    const input = document.getElementById('input-css').value;
-    if (!input.trim()) { alert('Please enter CSS code'); return; }
-    let result = '';
-    if (action === 'beautify') result = beautifyCSS(input);
-    else if (action === 'minify') result = minifyCSS(input);
-    else if (action === 'purify') result = purifyCSS(input);
-    document.getElementById('result-code').textContent = result;
-    document.getElementById('result-area').classList.remove('hidden');
-    if (typeof Prism !== 'undefined') Prism.highlightElement(document.getElementById('result-code'));
-    document.getElementById('action-status').innerHTML = '<span class="text-green-600">Done</span>';
-    setTimeout(() => { document.getElementById('action-status').innerHTML = ''; }, 2000);
-}
-function updateStats() {
-    const text = document.getElementById('input-css').value;
-    const lines = text.split('\n').length;
-    const chars = text.length;
-    document.getElementById('input-stats').textContent = text.trim() ? lines + ' lines, ' + chars + ' chars' : 'Enter CSS code';
-}
-function clearAll() {
-    document.getElementById('input-css').value = '';
-    document.getElementById('result-area').classList.add('hidden');
-    document.getElementById('action-status').innerHTML = '';
-    updateStats();
-}
-function copyResult() {
-    navigator.clipboard.writeText(document.getElementById('result-code').textContent).then(() => {
-        document.getElementById('action-status').innerHTML = '<span class="text-green-600">Copied!</span>';
-        setTimeout(() => { document.getElementById('action-status').innerHTML = ''; }, 2000);
-    });
-}
-document.addEventListener('DOMContentLoaded', updateStats);
-</script>
+    {{ template "header" . }}
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+        <div class="mx-auto">
+            <nav class="flex text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center"><a href="{{ call .L "/" }}"
+                            class="hover:text-indigo-600 transition-colors">{{ call .T "breadcrumb_home" }}</a></li>
+                    <li>
+                        <div class="flex items-center"><svg class="w-3 h-3 text-slate-400 mx-1" fill="none"
+                                viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg><a href="{{ call .L "/" }}#popular"
+                                class="ml-1 hover:text-indigo-600 transition-colors">{{ call .T "nav_dev_tools" }}</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center"><svg class="w-3 h-3 text-slate-400 mx-1" fill="none"
+                                viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg><span class="ml-1 text-slate-700 font-medium">CSS</span></div>
+                    </li>
+                </ol>
+            </nav>
+            <header class="mb-6 text-center">
+                <h1 class="text-2xl font-bold text-slate-900 mb-2">{{ call .T "tool_css_title" }}</h1>
+                <p class="text-slate-500 text-sm">{{ call .T "tool_css_desc" }}</p>
+            </header>
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                <form class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button type="button" onclick="processCSS('beautify')"
+                            class="px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors">{{
+                            call .T "css_beautify" }}</button>
+                        <button type="button" onclick="processCSS('minify')"
+                            class="px-4 py-2 bg-slate-600 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors">{{
+                            call .T "css_minify" }}</button>
+                        <button type="button" onclick="processCSS('purify')"
+                            class="px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700 transition-colors">{{
+                            call .T "css_purify" }}</button>
+                        <button type="button" onclick="clearAll()"
+                            class="px-4 py-2 bg-slate-200 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-300 transition-colors">{{
+                            call .T "css_clear" }}</button>
+                    </div>
+                    <div class="mb-4">
+                        <label for="input-css" class="block text-sm font-medium text-slate-700 mb-2">{{ call .T
+                            "css_input_label" }}</label>
+                        <textarea id="input-css"
+                            class="w-full p-4 rounded-lg border border-slate-300 font-mono text-sm resize-none outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="{{ call .T "css_input_placeholder" }}" rows="12"
+                            oninput="updateStats()"></textarea>
+                        <div class="mt-2 flex justify-between text-xs text-slate-500">
+                            <span id="input-stats">{{ call .T "css_stats_empty" }}</span>
+                            <span id="action-status"></span>
+                        </div>
+                    </div>
+                    <div id="result-area" class="hidden mt-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-sm font-medium text-slate-700">{{ call .T "css_result_placeholder"
+                                }}</label>
+                            <button type="button" onclick="copyResult()"
+                                class="px-3 py-1 text-xs bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 transition-colors">{{
+                                call .T "css_copy" }}</button>
+                        </div>
+                        <pre
+                            class="p-4 bg-slate-900 rounded-lg overflow-x-auto max-h-96"><code id="result-code" class="language-css text-sm"></code></pre>
+                    </div>
+                </form>
+            </div>
+            {{ template "seo_content_section" (dict "content_blocks" (list (dict "icon_path" "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" "title" (call .T "css_seo_h2_what") "content" (call .T "css_seo_p_what")) (dict "icon_path" "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4z" "title" (call .T "css_seo_h2_use") "content" (call .T "css_seo_p_use"))) "faq_items" (list (dict "question" (call .T "css_seo_faq_1_q") "answer" (call .T "css_seo_faq_1_a")) (dict "question" (call .T "css_seo_faq_2_q") "answer" (call .T "css_seo_faq_2_a")))) }}
+        </div>
+    </main>
+    {{ template "footer" . }}
+    <script>
+        function beautifyCSS(css) {
+            if (!css.trim()) return '';
+            let result = css;
+            result = result.replace(/\{/g, ' {\n');
+            result = result.replace(/\}/g, '}\n\n');
+            result = result.replace(/;/g, ';\n');
+            const lines = result.split('\n');
+            let formatted = [];
+            let indent = 0;
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) continue;
+                if (line.startsWith('}')) indent = Math.max(0, indent - 1);
+                formatted.push('    '.repeat(indent) + line);
+                if (line.endsWith('{')) indent++;
+            }
+            return formatted.join('\n');
+        }
+        function minifyCSS(css) {
+            if (!css.trim()) return '';
+            let result = css;
+            result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+            result = result.replace(/\s+/g, ' ');
+            result = result.replace(/\s*{\s*/g, '{');
+            result = result.replace(/\s*}\s*/g, '}');
+            result = result.replace(/\s*:\s*/g, ':');
+            result = result.replace(/\s*;\s*/g, ';');
+            result = result.replace(/\s*,\s*/g, ',');
+            result = result.replace(/;}/g, '}');
+            return result.trim();
+        }
+        function purifyCSS(css) {
+            if (!css.trim()) return '';
+            let result = css;
+            result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+            result = result.replace(/\s+/g, ' ');
+            result = result.replace(/}\s*/g, '}\n');
+            result = result.replace(/\s*{\s*/g, ' { ');
+            result = result.replace(/\s*:\s*/g, ': ');
+            result = result.replace(/\s*;\s*/g, '; ');
+            return result.split('\n').map(l => l.trim()).filter(l => l).join('\n');
+        }
+        function processCSS(action) {
+            const input = document.getElementById('input-css').value;
+            if (!input.trim()) { alert('Please enter CSS code'); return; }
+            let result = '';
+            if (action === 'beautify') result = beautifyCSS(input);
+            else if (action === 'minify') result = minifyCSS(input);
+            else if (action === 'purify') result = purifyCSS(input);
+            document.getElementById('result-code').textContent = result;
+            document.getElementById('result-area').classList.remove('hidden');
+            if (typeof Prism !== 'undefined') Prism.highlightElement(document.getElementById('result-code'));
+            document.getElementById('action-status').innerHTML = '<span class="text-green-600">Done</span>';
+            setTimeout(() => { document.getElementById('action-status').innerHTML = ''; }, 2000);
+        }
+        function updateStats() {
+            const text = document.getElementById('input-css').value;
+            const lines = text.split('\n').length;
+            const chars = text.length;
+            document.getElementById('input-stats').textContent = text.trim() ? lines + ' lines, ' + chars + ' chars' : 'Enter CSS code';
+        }
+        function clearAll() {
+            document.getElementById('input-css').value = '';
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('action-status').innerHTML = '';
+            updateStats();
+        }
+        function copyResult() {
+            navigator.clipboard.writeText(document.getElementById('result-code').textContent).then(() => {
+                document.getElementById('action-status').innerHTML = '<span class="text-green-600">Copied!</span>';
+                setTimeout(() => { document.getElementById('action-status').innerHTML = ''; }, 2000);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', updateStats);
+    </script>
 </body>
+
 </html>
 {{ end }}

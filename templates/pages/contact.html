@@ -6,7 +6,7 @@
 <body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
     {{ template "header" . }}
 
-    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
         <header class="mb-10 text-center">
             <h1 class="text-3xl font-extrabold text-slate-900 mb-4">{{ call .T "contact_title" }}</h1>
             <p class="text-slate-600 leading-relaxed">{{ call .T "contact_desc" }}</p>
@@ -17,11 +17,20 @@
 
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-slate-50 p-6 rounded-lg text-center">
-                    <svg class="w-8 h-8 text-indigo-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <svg class="w-8 h-8 text-indigo-500 mx-auto mb-3" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
                     <p class="font-medium">{{ call .T "contact_email" }}</p>
                 </div>
                 <div class="bg-slate-50 p-6 rounded-lg text-center">
-                    <svg class="w-8 h-8 text-indigo-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <svg class="w-8 h-8 text-indigo-500 mx-auto mb-3" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
                     <p class="font-medium">{{ call .T "contact_github" }}</p>
                 </div>
             </div>
@@ -30,5 +39,6 @@
 
     {{ template "footer" . }}
 </body>
+
 </html>
 {{ end }}

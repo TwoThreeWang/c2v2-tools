@@ -2,6 +2,7 @@
     "app_name": "C2V2 Tools",
     "meta_title_index": "C2V2 Online Toolbox - Free Developer Tools",
     "meta_desc_index": "A collection of free, high-performance online developer tools including Base64 conversion, JSON formatting, and more.",
+    "meta_keywords_index": "developer tools, online tools, privacy-first tools, base64 converter, json formatter, html formatter, css minifier",
     "footer_rights": "C2V2 Tools. All rights reserved.",
 
     "nav_home": "Home",
@@ -32,6 +33,7 @@
     "tool_base64_desc": "Free online tool to encode text to Base64 or decode Base64 to text. Fast, secure, and runs locally.",
     "tool_base64_page_title": "Base64 Encoder & Decoder - Online Converter",
     "tool_base64_page_desc": "Convert text to Base64 strings and vice versa instantly. Supports UTF-8. A privacy-first developer tool.",
+    "tool_base64_keywords": "base64 encoder, base64 decoder, base64 converter, online base64, base64 decode, base64 encode",
 
     "nav_dev_tools": "Developer Tools",
     "breadcrumb_home": "Home",
@@ -61,7 +63,8 @@
         "tool_json_title": "JSON Formatter & Validator",
         "tool_json_desc": "Free online tool to format (prettify) or minify JSON data. Validate syntax and fix errors instantly.",
         "tool_json_page_title": "JSON Formatter, Validator & Minifier - Online Tool",
-        "tool_json_page_desc": "Best online JSON formatter to beautify, minify, and validate JSON data. Privacy-first, runs locally in your browser.",
+    "tool_json_page_desc": "Best online JSON formatter to beautify, minify, and validate JSON data. Privacy-first, runs locally in your browser.",
+    "tool_json_keywords": "json formatter, json validator, json minifier, beautify json, debug json, online json tool",
 
         "json_input_label": "JSON Data",
         "json_input_placeholder": "Paste your JSON here...",
@@ -96,7 +99,8 @@
         "tool_html_title": "HTML Formatter & Previewer",
         "tool_html_desc": "Free online tool to format, minify, and preview HTML code. Validate syntax and beautify markup instantly.",
         "tool_html_page_title": "HTML Formatter, Minifier & Previewer - Online Tool",
-        "tool_html_page_desc": "Best online HTML formatter to beautify, minify, and preview HTML code. Privacy-first, runs locally in your browser.",
+    "tool_html_page_desc": "Best online HTML formatter to beautify, minify, and preview HTML code. Privacy-first, runs locally in your browser.",
+    "tool_html_keywords": "html formatter, html minifier, html beautifier, html preview, online html tool",
 
         "html_input_label": "HTML Code",
         "html_input_placeholder": "Paste your HTML here...",
@@ -141,6 +145,7 @@
         "about_li_privacy": "Privacy First: Local processing whenever possible.",
         "about_li_speed": "High Performance: Lightweight and fast loading.",
         "about_li_free": "100% Free: No registration or hidden costs.",
+    "meta_keywords_about": "about c2v2 tools, privacy-first developer tools, online utilities",
 
         "privacy_title": "Privacy Policy",
         "privacy_desc": "Your privacy is our priority. Learn how we handle your data.",
@@ -149,6 +154,7 @@
         "privacy_p_local": "The majority of our tools (like Base64 and HTML formatting) process data entirely within your browser. Your input data is never sent to our servers.",
         "privacy_h2_logs": "Server Logs",
         "privacy_p_logs": "Like most websites, we may collect standard server logs (IP address, browser type, etc.) for security and analytics purposes. We do not sell this information to third parties.",
+    "meta_keywords_privacy": "privacy policy, data privacy, local processing",
 
         "terms_title": "Terms of Service",
         "terms_desc": "Please read our terms carefully before using our tools.",
@@ -157,17 +163,20 @@
         "terms_p_usage": "You may use our tools for personal or commercial purposes. You agree not to use the service for any illegal activities or to disrupt the service for others.",
         "terms_h2_disclaimer": "Disclaimer",
         "terms_p_disclaimer": "Our tools are provided 'as is' without any warranties. While we strive for accuracy, we are not responsible for any data loss or errors resulting from the use of our tools.",
+    "meta_keywords_terms": "terms of service, usage terms",
 
         "contact_title": "Contact Us",
         "contact_desc": "Have a question or feedback? We'd love to hear from you.",
         "contact_p1": "We are constantly looking to improve our tools. If you have suggestions, bug reports, or just want to say hello, feel free to reach out.",
         "contact_email": "Email: support@c2v2.com",
         "contact_github": "GitHub: github.com/TwoThreeWang/c2v2-tools",
+    "meta_keywords_contact": "contact us, support, feedback",
 
         "tool_css_title": "CSS Formatter & Minifier",
         "tool_css_desc": "Free online tool to beautify, minify, and purify CSS code. Clean, compact, and optimize your stylesheets instantly.",
         "tool_css_page_title": "CSS Formatter, Minifier & Purifier - Online Tool",
-        "tool_css_page_desc": "Best online CSS formatter to beautify, minify, and purify CSS code. Privacy-first, runs locally in your browser.",
+    "tool_css_page_desc": "Best online CSS formatter to beautify, minify, and purify CSS code. Privacy-first, runs locally in your browser.",
+    "tool_css_keywords": "css formatter, css minifier, css beautifier, css purifier, online css tool",
 
         "css_input_label": "CSS Code",
         "css_input_placeholder": "Paste your CSS here...",
@@ -194,7 +203,8 @@
         "tool_heic_title": "HEIC to JPG Converter",
         "tool_heic_desc": "Free online tool to convert HEIC images to JPG or PNG instantly. 100% local conversion for maximum privacy.",
         "tool_heic_page_title": "Convert HEIC to JPG Free Online - HEIC Viewer & Converter",
-        "tool_heic_page_desc": "Free online tool to convert HEIC to JPG or PNG. Built-in HEIC viewer. Secure, 100% local conversion (no cloud upload). Fast & unlimited.",
+    "tool_heic_page_desc": "Free online tool to convert HEIC to JPG or PNG. Built-in HEIC viewer. Secure, 100% local conversion (no cloud upload). Fast & unlimited.",
+    "tool_heic_keywords": "heic converter, heic to jpg, heic to png, free heic converter, online heic tool",
 
         "heic_drop_title": "Drag & Drop HEIC files here",
         "heic_drop_subtitle": "or click to select",
@@ -222,5 +232,40 @@
         "heic_seo_faq_1_q": "What is an HEIC file?",
         "heic_seo_faq_1_a": "HEIC (High Efficiency Image Container) is a file format used by Apple for photos on iPhones and iPads. It compresses images more efficiently than JPG but isn't compatible with all devices.",
         "heic_seo_faq_2_q": "Is it safe to use this free online converter?",
-        "heic_seo_faq_2_a": "Yes! Unlike CloudConvert or other cloud tools, we process your photos locally in your browser. They are NEVER uploaded to any server, ensuring 100% privacy."
+        "heic_seo_faq_2_a": "Yes! Unlike CloudConvert or other cloud tools, we process your photos locally in your browser. They are NEVER uploaded to any server, ensuring 100% privacy.",
+
+        "tool_password_title": "Secure Password Generator",
+        "tool_password_desc": "Generate strong, secure, and random passwords locally in your browser. 100% client-side for maximum security.",
+        "tool_password_page_title": "Secure Password Generator - Strong, Random & Online",
+        "tool_password_page_desc": "Generate strong, secure passwords instantly with our free online tool. Random, easy to remember, and customizable. 100% client-side execution.",
+        "tool_password_keywords": "password generator, free password generator, password generator online strong, password generator online random, secure password generator, password generator online easy to remember",
+
+        "pwd_length": "Password Length",
+        "pwd_options": "Options",
+        "pwd_opt_uppercase": "Uppercase (A-Z)",
+        "pwd_opt_lowercase": "Lowercase (a-z)",
+        "pwd_opt_numbers": "Numbers (0-9)",
+        "pwd_opt_symbols": "Symbols (!@#$)",
+        "pwd_opt_easy_read": "Easy to Read (No l, 1, I, O, 0)",
+        "pwd_generate_btn": "Generate Password",
+        "pwd_copy_btn": "Copy",
+        "pwd_copied": "Copied!",
+        "pwd_history": "History (Last 3)",
+        "pwd_strength": "Strength",
+        "pwd_strength_weak": "Weak",
+        "pwd_strength_good": "Good",
+        "pwd_strength_strong": "Strong",
+        "pwd_client_side_note": "This tool runs 100% in your browser. Passwords verify generated locally and never sent to any server.",
+
+        "pwd_seo_h2_secure": "Why use a Secure Password Generator?",
+        "pwd_seo_p_secure": "Using weak passwords is the leading cause of data breaches. Our secure password generator creates cryptographically strong, random passwords that are impossible to guess. It uses your browser's built-in `window.crypto` API for maximum entropy.",
+        "pwd_seo_h2_features": "Features",
+        "pwd_seo_li_custom": "Customizable length and character sets.",
+        "pwd_seo_li_easy": "Easy-to-read mode avoids ambiguous characters.",
+        "pwd_seo_li_privacy": "100% Client-side execution. No data leaves your device.",
+        "pwd_seo_faq_1_q": "Is it safe to generate passwords online?",
+        "pwd_seo_faq_1_a": "Yes, IF the tool runs locally. Our Password Generator runs entirely in your browser using JavaScript. No data is ever sent to our servers. You can even disconnect your internet and use it!",
+
+        "cat_security_title": "Security Tools",
+        "cat_security_desc": "Essential tools for securing your digital life. Generate strong passwords, hashes, and more."
     }

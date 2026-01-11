@@ -318,6 +318,7 @@ func (t *JsonFmtTool) Handler(c *gin.Context) {
 	t.Render.HTML(c, http.StatusOK, "json_fmt.html", gin.H{
 		"title":       "tool_json_page_title",
 		"description": "tool_json_page_desc",
+		"keywords":    "tool_json_keywords",
 		"SchemaData":  graphSchema,
 	})
 }

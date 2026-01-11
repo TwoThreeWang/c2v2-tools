@@ -48,6 +48,10 @@ func (h *Helper) HTML(c *gin.Context, code int, name string, data gin.H) {
 		cleanPath = "/" + strings.TrimPrefix(currentPath, "/zh/")
 	} else if currentPath == "/zh" {
 		cleanPath = "/"
+	} else if strings.HasPrefix(currentPath, "/de/") {
+		cleanPath = "/" + strings.TrimPrefix(currentPath, "/de/")
+	} else if currentPath == "/de" {
+		cleanPath = "/"
 	}
 
 	// 1. 生成 Canonical URL (当前页面的绝对路径)
@@ -64,7 +68,7 @@ func (h *Helper) HTML(c *gin.Context, code int, name string, data gin.H) {
 
 	// 2. 生成 Hreflang Map (所有语言版本的绝对路径)
 	// 这里硬编码支持的语言，实际项目中可从 i18n 配置获取
-	supportedLangs := []string{"en", "zh"}
+	supportedLangs := []string{"en", "zh", "de"}
 	hreflangs := make(map[string]string)
 
 	for _, l := range supportedLangs {

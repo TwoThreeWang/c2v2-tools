@@ -26,7 +26,7 @@ type URL struct {
 func SitemapHandler(domain string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var urls []URL
-		supportedLangs := []string{"en", "zh"}
+		supportedLangs := []string{"en", "zh", "de"}
 
 		// 从统一注册中心获取所有路由
 		for _, route := range tools.AllRoutes() {
