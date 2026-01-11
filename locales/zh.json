@@ -211,6 +211,39 @@
         "css_seo_faq_2_q": "CSS 格式化会影响性能吗？",
         "css_seo_faq_2_a": "压缩后的 CSS 可以通过减小文件大小略微提高页面加载速度。美化或净化后的 CSS 不会影响运行时性能，但通过更好的代码可读性提高开发效率。",
         "css_input_empty": "请输入一些 CSS 代码。",
-        "copied": "已复制！"
+        "copied": "已复制！",
+
+        "tool_heic_title": "HEIC 转 JPG 转换器",
+        "tool_heic_desc": "免费在线 HEIC 转 JPG/PNG 工具。100% 本地转换，保护隐私，无需上传。",
+        "tool_heic_page_title": "免费在线 HEIC 转 JPG/PNG 工具 - HEIC 图片查看器与转换器",
+        "tool_heic_page_desc": "免费在线批量将 HEIC 转换为 JPG 或 PNG。内置 HEIC 查看器。无需上传云端，本地转换保护隐私。比 CloudConvert 更安全高效。",
+
+        "heic_drop_title": "拖入 HEIC 文件或点击上传",
+        "heic_drop_subtitle": "支持批量转换",
+        "heic_format_label": "转换为：",
+        "heic_btn_download_all": "一键全部下载",
+        "heic_btn_download": "下载",
+        "heic_btn_preview": "预览",
+        "heic_status_ready": "准备就绪",
+        "heic_status_converting": "转换中...",
+        "heic_status_done": "完成",
+        "heic_status_error": "错误",
+        "heic_error_browser": "您的浏览器不支持此功能。",
+        "heic_privacy_badge": "您的照片从未离开您的电脑，100%本地转换，无隐私泄露风险。",
+        "heic_preview_alt": "HEIC 预览",
+        "heic_clear_all": "清空全部",
+
+        "heic_seo_h2_how": "如何免费在线将 HEIC 转换为 JPG？",
+        "heic_seo_step_1_title": "上传或拖拽 HEIC 图片",
+        "heic_seo_step_1": "将您的 HEIC 文件拖入上方的操作区域。",
+        "heic_seo_step_2_title": "选择格式",
+        "heic_seo_step_2": "默认转为 JPG，您也可以切换为 PNG。",
+        "heic_seo_step_3_title": "保存文件",
+        "heic_seo_step_3": "转换完成后，点击下载按钮即可保存图片。",
+
+        "heic_seo_faq_1_q": "什么是 HEIC 文件？",
+        "heic_seo_faq_1_a": "HEIC 是 Apple 设备使用的一种高效图像格式。相比 JPG，它在相同画质下体积更小，但在非 Apple 设备上兼容性较差。",
+        "heic_seo_faq_2_q": "使用此免费在线工具安全吗？",
+        "heic_seo_faq_2_a": "绝对安全！与 CloudConvert 等云端工具不同，本工具利用 WebAssembly 技术，所有转换过程均在您的浏览器本地完成，图片绝不会上传到服务器。"
     }
 

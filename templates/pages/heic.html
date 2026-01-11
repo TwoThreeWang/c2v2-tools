@@ -1,0 +1,392 @@
+{{ define "heic.html" }}
+<!DOCTYPE html>
+<html lang="{{ .lang }}">
+{{ template "head" . }}
+
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+    {{ template "header" . }}
+
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Breadcrumbs -->
+            <nav class="flex text-sm text-slate-500 mb-4" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="{{ call .L " /" }}" class="hover:text-indigo-600 transition-colors">
+                            {{ call .T "breadcrumb_home" }}
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg>
+                            <a href="{{ call .L " /" }}#encoders"
+                                class="ml-1 hover:text-indigo-600 transition-colors">{{ call .T "cat_encoders_title"
+                                }}</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-3 h-3 text-slate-400 mx-1" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
+                            </svg>
+                            <span class="ml-1 text-slate-700 font-medium">HEIC Converter</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- Hero Header -->
+            <header class="mb-8 text-center">
+                <h1 class="text-3xl font-bold text-slate-900 mb-3">{{ call .T "tool_heic_page_title" }}</h1>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">{{ call .T "tool_heic_page_desc" }}</p>
+                <div
+                    class="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                    {{ call .T "heic_privacy_badge" }}
+                </div>
+            </header>
+
+            <!-- Tool Interface -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden mb-12">
+
+                <!-- Format Selection Bar -->
+                <div class="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="text-sm font-semibold text-slate-700">{{ call .T "heic_format_label" }}</span>
+                        <div class="flex bg-slate-200 p-1 rounded-lg">
+                            <button id="format-jpg" onclick="setFormat('jpg')"
+                                class="px-4 py-1.5 rounded-md text-sm font-medium bg-white text-indigo-600 shadow-sm transition-all">JPG</button>
+                            <button id="format-png" onclick="setFormat('png')"
+                                class="px-4 py-1.5 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 transition-all">PNG</button>
+                        </div>
+                    </div>
+                    <button onclick="clearAllFiles()"
+                        class="text-sm text-slate-500 hover:text-red-600 font-medium transition-colors hidden"
+                        id="clear-all-btn">
+                        {{ call .T "heic_clear_all" }}
+                    </button>
+                </div>
+
+                <!-- Drop Zone -->
+                <div id="drop-zone" class="p-10 transition-all duration-200 group">
+                    <input type="file" id="file-input" class="hidden" multiple accept=".heic,.heif"
+                        onchange="handleFiles(this.files)">
+
+                    <div class="border-2 border-dashed border-slate-300 rounded-xl p-10 text-center hover:border-indigo-500 hover:bg-slate-50 transition-colors cursor-pointer"
+                        onclick="document.getElementById('file-input').click()"
+                        ondragover="event.preventDefault(); this.classList.add('border-indigo-500', 'bg-indigo-50')"
+                        ondragleave="this.classList.remove('border-indigo-500', 'bg-indigo-50')"
+                        ondrop="event.preventDefault(); this.classList.remove('border-indigo-500', 'bg-indigo-50'); handleFiles(event.dataTransfer.files)">
+                        <div
+                            class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">{{ call .T "heic_drop_title" }}</h3>
+                        <p class="text-slate-500">{{ call .T "heic_drop_subtitle" }}</p>
+                    </div>
+                </div>
+
+                <!-- Processing List -->
+                <div id="file-list" class="px-6 pb-6 hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Items will be injected here -->
+                </div>
+
+                <!-- Global Action Bar -->
+                <div id="action-bar" class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end hidden">
+                    <button onclick="downloadAll()"
+                        class="px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-200 transition-all flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                        {{ call .T "heic_btn_download_all" }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- SEO Content -->
+            <div class="prose max-w-none text-slate-600">
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-indigo-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="{{ .ICON_HOWTO }}"></path>
+                            </svg>
+                            {{ call .T "heic_seo_h2_how" }}
+                        </h2>
+                        <ol class="relative border-l border-indigo-200 ml-3 space-y-8 mt-6">
+                            <li class="mb-10 ml-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-4 ring-white">
+                                    <span class="text-indigo-600 font-bold">1</span>
+                                </span>
+                                <h3 class="font-bold text-slate-900 mb-1">{{ call .T "heic_seo_step_1_title" }}</h3>
+                                <p class="text-sm">{{ call .T "heic_seo_step_1" }}</p>
+                            </li>
+                            <li class="mb-10 ml-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-4 ring-white">
+                                    <span class="text-indigo-600 font-bold">2</span>
+                                </span>
+                                <h3 class="font-bold text-slate-900 mb-1">{{ call .T "heic_seo_step_2_title" }}</h3>
+                                <p class="text-sm">{{ call .T "heic_seo_step_2" }}</p>
+                            </li>
+                            <li class="ml-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-8 h-8 bg-indigo-100 rounded-full -left-4 ring-4 ring-white">
+                                    <span class="text-indigo-600 font-bold">3</span>
+                                </span>
+                                <h3 class="font-bold text-slate-900 mb-1">{{ call .T "heic_seo_step_3_title" }}</h3>
+                                <p class="text-sm">{{ call .T "heic_seo_step_3" }}</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-indigo-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="{{ .ICON_FAQ }}"></path>
+                            </svg>
+                            FAQ
+                        </h2>
+                        <div class="space-y-6 mt-6">
+                            <div>
+                                <h3 class="font-bold text-slate-900 mb-2">{{ call .T "heic_seo_faq_1_q" }}</h3>
+                                <p class="text-sm">{{ call .T "heic_seo_faq_1_a" }}</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 mb-2">{{ call .T "heic_seo_faq_2_q" }}</h3>
+                                <p class="text-sm">{{ call .T "heic_seo_faq_2_a" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{ template "footer" . }}
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/75 transition-opacity" onclick="closePreview()"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 max-w-[90vw] max-h-[90vh] flex flex-col">
+                    <div class="absolute right-0 top-0 pr-4 pt-4 block z-20">
+                        <button type="button"
+                            class="rounded-full bg-black/50 p-2 text-white hover:bg-black/70 focus:outline-none transition-colors"
+                            onclick="closePreview()">
+                            <span class="sr-only">Close</span>
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="p-1 flex items-center justify-center bg-black/90 overflow-auto">
+                        <img id="preview-image" src="" alt="Preview" class="max-w-full max-h-[85vh] object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts loaded at end of body -->
+    <script src="https://cdn.jsdelivr.net/npm/heic-to@1.3.0/dist/iife/heic-to.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        let currentFormat = 'jpg';
+        let processedFiles = [];
+
+        function setFormat(format) {
+            currentFormat = format;
+            document.getElementById('format-jpg').className = format === 'jpg'
+                ? 'px-4 py-1.5 rounded-md text-sm font-medium bg-white text-indigo-600 shadow-sm transition-all'
+                : 'px-4 py-1.5 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 transition-all';
+            document.getElementById('format-png').className = format === 'png'
+                ? 'px-4 py-1.5 rounded-md text-sm font-medium bg-white text-indigo-600 shadow-sm transition-all'
+                : 'px-4 py-1.5 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 transition-all';
+        }
+
+        function clearAllFiles() {
+            processedFiles = [];
+            document.getElementById('file-list').innerHTML = '';
+            document.getElementById('file-list').classList.add('hidden');
+            document.getElementById('action-bar').classList.add('hidden');
+            document.getElementById('clear-all-btn').classList.add('hidden');
+            // document.getElementById('drop-zone').classList.remove('hidden'); // Always visible now
+            document.getElementById('file-input').value = '';
+        }
+
+        async function handleFiles(fileListObj) {
+            if (!fileListObj || fileListObj.length === 0) return;
+            // Convert live FileList to static array immediately
+            const files = Array.from(fileListObj);
+
+            const fileList = document.getElementById('file-list');
+            const actionBar = document.getElementById('action-bar');
+
+            fileList.classList.remove('hidden');
+            // document.getElementById('drop-zone').classList.add('hidden'); // Keep visible
+            document.getElementById('clear-all-btn').classList.remove('hidden');
+
+            // Allow selecting same file again
+            document.getElementById('file-input').value = '';
+
+            // Process each file
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const id = 'file-' + Date.now() + '-' + i;
+
+                // Create UI Element
+                const item = document.createElement('div');
+                item.id = id;
+                item.className = 'flex items-center p-3 bg-slate-50 border border-slate-200 rounded-lg';
+                item.innerHTML = `
+                    <div class="w-16 h-16 mr-4 bg-slate-200 rounded overflow-hidden flex-shrink-0 relative">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-400 text-xs" id="${id}-loader">
+                           <svg class="animate-spin h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        </div>
+                        <img id="${id}-img" class="w-full h-full object-cover hidden" />
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h4 class="text-sm font-medium text-slate-900 truncate pr-2" title="${file.name}" id="${id}-name">${file.name}</h4>
+                            <span class="text-xs font-mono text-slate-400">${(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-indigo-600 font-medium" id="${id}-status">{{ call .T "heic_status_converting" }}</span>
+                            <div class="flex items-center">
+                                <button id="${id}-preview" onclick="showPreview('${id}')" class="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1 rounded hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 transition-colors hidden font-semibold mr-2">
+                                    {{ call .T "heic_btn_preview" }}
+                                </button>
+                                <a id="${id}-dl" href="#" download class="text-xs bg-white border border-slate-200 text-slate-600 px-3 py-1 rounded hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200 transition-colors hidden font-semibold">
+                                    {{ call .T "heic_btn_download" }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                fileList.appendChild(item);
+
+                // Start Conversion
+                try {
+                    // Check if it's HEIC first (optional but safer)
+                    // Note: HeicTo handles conversion directly
+
+                    const resultBlob = await HeicTo({
+                        blob: file,
+                        type: currentFormat === 'png' ? 'image/png' : 'image/jpeg',
+                        quality: 0.9
+                    });
+
+                    // Handle result - HeicTo returns a single Blob by default
+                    // If resultBlob is an array (future proofing), handle it
+                    const finalBlob = Array.isArray(resultBlob) ? resultBlob[0] : resultBlob;
+                    const url = URL.createObjectURL(finalBlob);
+
+                    // Update UI
+                    const img = document.getElementById(`${id}-img`);
+                    img.src = url;
+                    img.classList.remove('hidden');
+                    document.getElementById(`${id}-loader`).classList.add('hidden');
+
+                    const dlBtn = document.getElementById(`${id}-dl`);
+                    const newName = file.name.replace(/\.(heic|HEIC)$/, '') + '.' + currentFormat;
+                    dlBtn.href = url;
+                    dlBtn.download = newName;
+                    dlBtn.classList.remove('hidden');
+
+                    const previewBtn = document.getElementById(`${id}-preview`);
+                    previewBtn.classList.remove('hidden');
+
+                    document.getElementById(`${id}-status`).innerText = '{{ call .T "heic_status_done" }}';
+                    document.getElementById(`${id}-status`).classList.replace('text-indigo-600', 'text-green-600');
+
+                    // Update filename to show converted extension
+                    document.getElementById(`${id}-name`).innerText = newName;
+                    document.getElementById(`${id}-name`).title = newName;
+
+                    processedFiles.push({
+                        blob: finalBlob,
+                        name: newName
+                    });
+
+                } catch (e) {
+                    console.error(e);
+                    document.getElementById(`${id}-status`).innerText = 'Error';
+                    document.getElementById(`${id}-status`).classList.replace('text-indigo-600', 'text-red-600');
+                    // Show error details if possible
+                    document.getElementById(`${id}-status`).title = e.message || e.toString();
+                    document.getElementById(`${id}-loader`).innerHTML = '<span class="text-red-500 text-2xl">!</span>';
+                }
+            }
+
+            // Show Download All if we have successful conversions
+            if (processedFiles.length > 0) {
+                actionBar.classList.remove('hidden');
+            }
+        }
+
+        function downloadAll() {
+            if (processedFiles.length === 0) return;
+
+            if (processedFiles.length === 1) {
+                // Just click the single download button
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(processedFiles[0].blob);
+                link.download = processedFiles[0].name;
+                link.click();
+                return;
+            }
+
+            const zip = new JSZip();
+            processedFiles.forEach(file => {
+                zip.file(file.name, file.blob);
+            });
+
+            zip.generateAsync({ type: "blob" }).then(function (content) {
+                saveAs(content, "converted_images.zip");
+            });
+        }
+
+        function showPreview(id) {
+            const img = document.getElementById(id + '-img');
+            const previewImg = document.getElementById('preview-image');
+            previewImg.src = img.src;
+            document.getElementById('preview-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closePreview() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-image').src = '';
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+
+</html>
+{{ end }}

@@ -99,6 +99,7 @@ Sitemap: ` + domain + `/sitemap.xml
 	jsonTool := tools.NewJsonFmtTool(renderHelper)
 	htmlTool := tools.NewHTMLFmtTool(renderHelper)
 	cssTool := tools.NewCSSFmtTool(renderHelper)
+	heicTool := tools.NewHeicTool(renderHelper)
 
 	// 从统一注册中心获取工具数据
 	categories := tools.Categories()
@@ -161,6 +162,8 @@ Sitemap: ` + domain + `/sitemap.xml
 		defaultGroup.POST("/html-fmt", htmlTool.Handler)
 		defaultGroup.GET("/css-fmt", cssTool.Handler)
 		defaultGroup.POST("/css-fmt", cssTool.Handler)
+		defaultGroup.GET("/heic-to-jpg", heicTool.Handler)
+		defaultGroup.POST("/heic-to-jpg", heicTool.Handler)
 
 		// 静态页面路由
 		defaultGroup.GET("/about", func(c *gin.Context) {
@@ -202,6 +205,8 @@ Sitemap: ` + domain + `/sitemap.xml
 		langGroup.POST("/html-fmt", htmlTool.Handler)
 		langGroup.GET("/css-fmt", cssTool.Handler)
 		langGroup.POST("/css-fmt", cssTool.Handler)
+		langGroup.GET("/heic-to-jpg", heicTool.Handler)
+		langGroup.POST("/heic-to-jpg", heicTool.Handler)
 
 		// 静态页面路由
 		langGroup.GET("/about", func(c *gin.Context) {

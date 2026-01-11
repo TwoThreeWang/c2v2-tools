@@ -189,5 +189,38 @@
         "css_seo_faq_2_q": "Does CSS formatting affect performance?",
         "css_seo_faq_2_a": "Minified CSS can slightly improve page load times by reducing file size. Beautified or purified CSS does not affect runtime performance but improves development efficiency through better code readability.",
         "css_input_empty": "Please enter some CSS code.",
-        "copied": "Copied!"
+        "copied": "Copied!",
+
+        "tool_heic_title": "HEIC to JPG Converter",
+        "tool_heic_desc": "Free online tool to convert HEIC images to JPG or PNG instantly. 100% local conversion for maximum privacy.",
+        "tool_heic_page_title": "Convert HEIC to JPG Free Online - HEIC Viewer & Converter",
+        "tool_heic_page_desc": "Free online tool to convert HEIC to JPG or PNG. Built-in HEIC viewer. Secure, 100% local conversion (no cloud upload). Fast & unlimited.",
+
+        "heic_drop_title": "Drag & Drop HEIC files here",
+        "heic_drop_subtitle": "or click to select",
+        "heic_format_label": "Convert to:",
+        "heic_btn_download_all": "Download All",
+        "heic_btn_download": "Download",
+        "heic_btn_preview": "Preview",
+        "heic_status_ready": "Ready",
+        "heic_status_converting": "Converting...",
+        "heic_status_done": "Done",
+        "heic_status_error": "Error",
+        "heic_error_browser": "Your browser does not support this feature.",
+        "heic_privacy_badge": "Your photos never leave your device. 100% Local Conversion.",
+        "heic_preview_alt": "HEIC Preview",
+        "heic_clear_all": "Clear All",
+
+        "heic_seo_h2_how": "How to convert HEIC to JPG Online for Free?",
+        "heic_seo_step_1_title": "Upload or Drag HEIC",
+        "heic_seo_step_1": "Drag and drop your HEIC files into the box above.",
+        "heic_seo_step_2_title": "Select Format",
+        "heic_seo_step_2": "Choose JPG (default) or PNG format.",
+        "heic_seo_step_3_title": "Download",
+        "heic_seo_step_3": "Click Download or Download All to save your converted images.",
+
+        "heic_seo_faq_1_q": "What is an HEIC file?",
+        "heic_seo_faq_1_a": "HEIC (High Efficiency Image Container) is a file format used by Apple for photos on iPhones and iPads. It compresses images more efficiently than JPG but isn't compatible with all devices.",
+        "heic_seo_faq_2_q": "Is it safe to use this free online converter?",
+        "heic_seo_faq_2_a": "Yes! Unlike CloudConvert or other cloud tools, we process your photos locally in your browser. They are NEVER uploaded to any server, ensuring 100% privacy."
     }
