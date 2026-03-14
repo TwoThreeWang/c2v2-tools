@@ -176,6 +176,7 @@ Sitemap: ` + domain + `/sitemap.xml
 		defaultGroup.GET("/clipboard", clipboardTool.HandleIndex)
 		defaultGroup.GET("/clipboard/create", clipboardTool.HandleCreate)
 		defaultGroup.GET("/clipboard/:id", clipboardTool.HandleRoom)
+		defaultGroup.GET("/api/clipboard/get/:id", clipboardTool.HandleGet)
 		defaultGroup.POST("/api/clipboard/save/:id", clipboardTool.HandleSave)
 		defaultGroup.GET("/api/clipboard/stream/:id", clipboardTool.HandleStream)
 
@@ -228,6 +229,7 @@ Sitemap: ` + domain + `/sitemap.xml
 		langGroup.GET("/clipboard", clipboardTool.HandleIndex)
 		langGroup.GET("/clipboard/create", clipboardTool.HandleCreate)
 		langGroup.GET("/clipboard/:id", clipboardTool.HandleRoom)
+		langGroup.GET("/api/clipboard/get/:id", clipboardTool.HandleGet)
 		langGroup.POST("/api/clipboard/save/:id", clipboardTool.HandleSave)
 		langGroup.GET("/api/clipboard/stream/:id", clipboardTool.HandleStream)
 

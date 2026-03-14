@@ -7,16 +7,26 @@
       x-data="clipboardRoom('{{ .RoomID }}')">
     {{ template "header" . }}
 
+    <!-- Hidden initial content storage -->
+    <textarea id="initialContent" class="hidden">{{ .InitialContent }}</textarea>
+
     <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-        <!-- Room Header: Simple and Clean -->
-        <div class="flex items-center justify-between mb-8 group">
+        <!-- Room Header -->
+        <div class="flex flex-wrap items-center justify-between mb-8 gap-4">
             <div class="flex items-center gap-4">
-                <div class="bg-indigo-600 text-white px-4 py-2 rounded-2xl shadow-sm font-bold tracking-wider flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                <a href="/clipboard" 
+                   class="flex items-center gap-2 px-3 py-2 text-slate-500 hover:text-indigo-600 hover:bg-white rounded-xl transition-all font-medium text-sm group">
+                    <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    {{ call .T "clipboard_back_to_index" }}
+                </a>
+                <div class="h-6 w-px bg-slate-200"></div>
+                <div class="bg-indigo-600 text-white px-4 py-2 rounded-2xl shadow-sm font-bold tracking-wider flex items-center text-sm">
                     ID: {{ .RoomID }}
                 </div>
-                <div class="h-8 w-px bg-slate-200"></div>
-                <div class="flex items-center gap-2">
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="flex items-center gap-2 mr-4">
                     <div x-show="status === 'saving'" class="flex items-center text-indigo-500" x-cloak>
                         <svg class="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         <span class="text-xs font-medium">{{ call .T "clipboard_status_saving" }}</span>
@@ -26,30 +36,43 @@
                         <span class="text-xs font-medium">{{ call .T "clipboard_status_saved" }}</span>
                     </div>
                 </div>
+
+                <button @click="refreshContent" 
+                        :disabled="status === 'refreshing'"
+                        class="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white rounded-xl transition-all shadow-sm active:scale-95 disabled:opacity-50">
+                    <svg class="h-4 w-4" :class="status === 'refreshing' ? 'animate-spin' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    <span class="text-sm font-bold">{{ call .T "clipboard_refresh" }}</span>
+                </button>
+
+                <button @click="copyLink" 
+                        class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 hover:border-indigo-500 hover:text-indigo-600 transition-all shadow-sm active:scale-95">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <span class="text-sm font-semibold">{{ call .T "clipboard_copy_link" }}</span>
+                </button>
             </div>
-            
-            <button @click="copyLink" 
-                    class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 hover:border-indigo-500 hover:text-indigo-600 transition-all shadow-sm active:scale-95">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                <span class="text-sm font-semibold">{{ call .T "clipboard_copy_link" }}</span>
-            </button>
         </div>
 
         <div class="grid lg:grid-cols-4 gap-8">
-            <!-- Main Content Area -->
             <div class="lg:col-span-3">
-                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[60vh] md:h-[70vh] ring-1 ring-slate-100 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all duration-300">
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[60vh] md:h-[70vh] ring-1 ring-slate-100 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all duration-300 relative group">
+                    <!-- Copy Button: Always visible for mobile -->
+                    <button @click="copyAll" 
+                            class="absolute top-6 right-6 p-3 bg-slate-900/5 hover:bg-slate-900/10 text-slate-600 rounded-2xl transition-all flex items-center gap-2 backdrop-blur-sm active:scale-90 border border-white/20 z-10">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        <span class="text-xs font-bold">{{ call .T "clipboard_copy_content" }}</span>
+                    </button>
+
                     <textarea 
                         x-model="content"
                         @input.debounce.500ms="saveContent"
-                        class="w-full h-full p-8 text-slate-800 text-lg leading-relaxed resize-none outline-none font-mono bg-transparent"
+                        class="w-full h-full p-8 pt-16 text-slate-800 text-lg leading-relaxed resize-none outline-none font-mono bg-transparent"
                         placeholder="{{ call .T "clipboard_textarea_placeholder" }}"
                         spellcheck="false"
                     ></textarea>
                     
                     <div class="px-8 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
                         <div class="flex items-center">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2"></span>
                             {{ call .T "clipboard_auto_sync_on" }}
                         </div>
                         <div class="flex gap-4">
@@ -60,15 +83,14 @@
                 </div>
             </div>
 
-            <!-- Sidebar -->
             <div class="lg:col-span-1 space-y-6">
                 <!-- QR Code Section -->
-                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center group">
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center">
                     <h3 class="font-bold text-slate-900 mb-6 flex items-center justify-center gap-2">
                         <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4"></path></svg>
                         {{ call .T "clipboard_scan_share" }}
                     </h3>
-                    <div class="relative inline-block p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-6 transition-transform duration-300 group-hover:scale-105">
+                    <div class="relative inline-block p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-6 transition-transform duration-300 hover:scale-105">
                         <div id="qrcode" class="flex justify-center qr-container"></div>
                     </div>
                     <p class="text-xs text-slate-500 leading-relaxed px-2">{{ call .T "clipboard_scan_hint" }}</p>
@@ -83,12 +105,12 @@
                         </div>
                         <h4 class="font-bold text-lg mb-4">{{ call .T "clipboard_room_tip_title" }}</h4>
                         <ul class="text-sm space-y-3 opacity-90 font-medium leading-snug">
-                            <li class="flex gap-2">
-                                <span class="text-indigo-200">•</span>
+                            <li class="flex gap-2 text-indigo-100">
+                                <span class="text-indigo-300">•</span>
                                 {{ call .T "clipboard_room_tip_1" }}
                             </li>
-                            <li class="flex gap-2">
-                                <span class="text-indigo-200">•</span>
+                            <li class="flex gap-2 text-indigo-100">
+                                <span class="text-indigo-300">•</span>
                                 {{ call .T "clipboard_room_tip_2" }}
                             </li>
                         </ul>
@@ -100,36 +122,33 @@
 
     {{ template "footer" . }}
 
-    <!-- Localized Scripts -->
     <script src="/static/js/vendor/alpine.min.js" defer></script>
     <script src="/static/js/vendor/qrcode.min.js"></script>
 
     <style>
-        .qr-container img {
-            margin: auto;
-            border-radius: 8px;
-        }
+        .qr-container img { margin: auto; border-radius: 8px; }
     </style>
 
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('clipboardRoom', (roomId) => ({
                 content: '',
-                status: 'idle', // idle, saving, saved
+                status: 'idle',
                 url: window.location.href,
 
                 init() {
-                    // 确保 DOM 加载后初始化二维码
-                    this.$nextTick(() => {
-                        this.initQRCode();
-                    });
-                    this.initSSE();
+                    // 安全读取初始内容
+                    const initialEl = document.getElementById('initialContent');
+                    if (initialEl) {
+                        this.content = initialEl.value;
+                    }
+                    this.$nextTick(() => { this.initQRCode(); });
                 },
 
                 initQRCode() {
                     const qrEl = document.getElementById("qrcode");
                     if (!qrEl) return;
-                    qrEl.innerHTML = ""; // 清理旧内容
+                    qrEl.innerHTML = "";
                     new QRCode(qrEl, {
                         text: this.url,
                         width: 140,
@@ -140,23 +159,22 @@
                     });
                 },
 
-                initSSE() {
-                    const eventSource = new EventSource(`/api/clipboard/stream/${roomId}`);
-                    
-                    eventSource.onmessage = (event) => {
-                        try {
-                            const data = JSON.parse(event.data);
-                            if (data.content !== undefined && data.content !== this.content) {
+                async refreshContent() {
+                    this.status = 'refreshing';
+                    try {
+                        const response = await fetch(`/api/clipboard/get/${roomId}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.content !== undefined) {
                                 this.content = data.content;
                             }
-                        } catch (e) {
-                            // 忽略非 JSON 数据（如 ping）
                         }
-                    };
-
-                    eventSource.onerror = () => {
-                        console.error("SSE Connection lost. Retrying...");
-                    };
+                    } catch (e) {
+                        console.error("Refresh failed", e);
+                    } finally {
+                        this.status = 'saved';
+                        setTimeout(() => this.status = 'idle', 1000);
+                    }
                 },
 
                 async saveContent() {
@@ -167,31 +185,27 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ content: this.content })
                         });
-                        
                         if (response.ok) {
                             this.status = 'saved';
-                            setTimeout(() => {
-                                if (this.status === 'saved') this.status = 'idle';
-                            }, 2000);
-                        } else {
-                            this.status = 'idle';
-                        }
+                            setTimeout(() => { if (this.status === 'saved') this.status = 'idle'; }, 2000);
+                        } else { this.status = 'idle'; }
                     } catch (e) {
                         console.error("Save failed", e);
                         this.status = 'idle';
                     }
                 },
 
+                copyAll() {
+                    navigator.clipboard.writeText(this.content).then(() => {
+                        this.status = 'saved';
+                        setTimeout(() => this.status = 'idle', 1000);
+                    });
+                },
+
                 copyLink() {
-                    // 使用标准的复制方法，移除多余的弹窗，仅依赖控制台或状态反馈
                     navigator.clipboard.writeText(this.url).then(() => {
-                        // 如果有全局通知系统可以使用，否则通过改变按钮显示或小反馈
-                        // 用户反馈会多出弹窗，可能是因为 init 里多次绑定或事件冒泡
-                        // 这里直接执行，不再使用 alert 以避免重复弹窗干扰
                         this.status = 'saved'; 
                         setTimeout(() => this.status = 'idle', 1000);
-                    }).catch(err => {
-                        console.error('Copy failed:', err);
                     });
                 }
             }));

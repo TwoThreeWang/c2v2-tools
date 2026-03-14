@@ -145,10 +145,29 @@ func (h *ClipboardHandler) HandleRoom(c *gin.Context) {
 		return
 	}
 
+	room := h.Manager.GetRoom(id)
+	room.Mu.Lock()
+	content := room.Content
+	room.Mu.Unlock()
+
 	h.Render.HTML(c, http.StatusOK, "clipboard_room.html", gin.H{
 		"title":       "tool_clipboard_room_title",
 		"description": "tool_clipboard_room_desc",
 		"RoomID":      id,
+		"InitialContent": content,
+	})
+}
+
+func (h *ClipboardHandler) HandleGet(c *gin.Context) {
+	id := c.Param("id")
+	room := h.Manager.GetRoom(id)
+	room.Mu.Lock()
+	content := room.Content
+	room.Mu.Unlock()
+
+	c.JSON(http.StatusOK, gin.H{
+		"status":  "success",
+		"content": content,
 	})
 }
 
