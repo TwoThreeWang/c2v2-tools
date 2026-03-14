@@ -69,6 +69,14 @@ var (
 		URL:      "/password-generator", // Must match router
 		IconHTML: template.HTML(`<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>`),
 	}
+
+	ToolClipboard = Tool{
+		ID:       "clipboard",
+		NameKey:  "tool_clipboard_title",
+		DescKey:  "tool_clipboard_desc",
+		URL:      "/clipboard",
+		IconHTML: template.HTML(`<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>`),
+	}
 )
 
 // Categories 返回所有工具分类（用于首页渲染）
@@ -92,12 +100,18 @@ func Categories() []Category {
 			DescKey: "cat_formatters_desc",
 			Tools:   []Tool{ToolJSON, ToolHTML, ToolCSS},
 		},
+		{
+			ID:      "utilities",
+			NameKey: "cat_utilities_title",
+			DescKey: "cat_utilities_desc",
+			Tools:   []Tool{ToolClipboard},
+		},
 	}
 }
 
 // AllTools 返回所有工具的扁平列表（用于搜索）
 func AllTools() []Tool {
-	return []Tool{ToolBase64, ToolJSON, ToolHTML, ToolCSS, ToolHeic, ToolPassword}
+	return []Tool{ToolBase64, ToolJSON, ToolHTML, ToolCSS, ToolHeic, ToolPassword, ToolClipboard}
 }
 
 // AllRoutes 返回所有需要包含在 Sitemap 中的路由
@@ -111,6 +125,7 @@ func AllRoutes() []string {
 		"html-fmt",           // HTML 格式化
 		"css-fmt",            // CSS 格式化
 		"password-generator", // 密码生成器
+		"clipboard",          // 剪贴板
 		"about",              // 关于页面
 		"privacy",            // 隐私政策
 		"terms",              // 服务条款

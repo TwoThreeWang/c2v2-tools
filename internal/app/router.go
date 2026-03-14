@@ -104,6 +104,7 @@ Sitemap: ` + domain + `/sitemap.xml
 	cssTool := tools.NewCSSFmtTool(renderHelper)
 	heicTool := tools.NewHeicTool(renderHelper)
 	passwordTool := tools.NewPasswordTool(renderHelper)
+	clipboardTool := tools.NewClipboardHandler(renderHelper)
 
 	// 从统一注册中心获取工具数据
 	categories := tools.Categories()
@@ -171,6 +172,13 @@ Sitemap: ` + domain + `/sitemap.xml
 		defaultGroup.POST("/heic-to-jpg", heicTool.Handler)
 		defaultGroup.GET("/password-generator", passwordTool.Handler)
 
+		// 剪贴板工具
+		defaultGroup.GET("/clipboard", clipboardTool.HandleIndex)
+		defaultGroup.GET("/clipboard/create", clipboardTool.HandleCreate)
+		defaultGroup.GET("/clipboard/:id", clipboardTool.HandleRoom)
+		defaultGroup.POST("/api/clipboard/save/:id", clipboardTool.HandleSave)
+		defaultGroup.GET("/api/clipboard/stream/:id", clipboardTool.HandleStream)
+
 		// 静态页面路由
 		defaultGroup.GET("/about", func(c *gin.Context) {
 			renderHelper.HTML(c, http.StatusOK, "about.html", gin.H{"title": "nav_about", "description": "about_desc", "keywords": "meta_keywords_about"})
@@ -215,6 +223,13 @@ Sitemap: ` + domain + `/sitemap.xml
 		langGroup.GET("/heic-to-jpg", heicTool.Handler)
 		langGroup.POST("/heic-to-jpg", heicTool.Handler)
 		langGroup.GET("/password-generator", passwordTool.Handler)
+
+		// 剪贴板工具
+		langGroup.GET("/clipboard", clipboardTool.HandleIndex)
+		langGroup.GET("/clipboard/create", clipboardTool.HandleCreate)
+		langGroup.GET("/clipboard/:id", clipboardTool.HandleRoom)
+		langGroup.POST("/api/clipboard/save/:id", clipboardTool.HandleSave)
+		langGroup.GET("/api/clipboard/stream/:id", clipboardTool.HandleStream)
 
 		// 静态页面路由
 		langGroup.GET("/about", func(c *gin.Context) {

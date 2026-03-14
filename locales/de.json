@@ -267,5 +267,42 @@
     "pwd_seo_faq_1_a": "Ja, WENN das Tool lokal läuft. Unser Passwort-Generator läuft vollständig in Ihrem Browser mit JavaScript. Es werden keine Daten an unsere Server gesendet. Sie können sogar Ihre Internetverbindung trennen und es verwenden!",
 
     "cat_security_title": "Sicherheits-Tools",
-    "cat_security_desc": "Wichtige Tools zur Sicherung Ihres digitalen Lebens. Erstellen Sie starke Passwörter, Hashes und mehr."
+    "cat_security_desc": "Wichtige Tools zur Sicherung Ihres digitalen Lebens. Erstellen Sie starke Passwörter, Hashes und mehr.",
+    "cat_utilities_title": "Dienstprogramme",
+    "cat_utilities_desc": "Tools zur Steigerung der täglichen Produktivität. Geräteübergreifende Zusammenarbeit, Inhaltssynchronisierung usw.",
+
+    "tool_clipboard_title": "Online-Zwischenablage",
+    "tool_clipboard_desc": "Sofortige Textsynchronisierung über mehrere Geräte hinweg. Synchronisieren Sie Inhalte in Echtzeit, indem Sie derselben Raum-ID beitreten. Unterstützt QR-Code-Zugriff und automatisches Speichern.",
+    "tool_clipboard_keywords": "online zwischenablage, zwischenablage synchronisieren, geräteübergreifende zwischenablage, textfreigabe, echtzeit-synchronisierung, auto-save zwischenablage",
+    "tool_clipboard_room_title": "Sync-Raum",
+    "tool_clipboard_room_desc": "Dies ist ein privatsphäre-orientierter Echtzeit-Synchronisationsraum. Eingegebene Inhalte werden mit allen Geräten synchronisiert, auf denen diese Seite geöffnet ist.",
+    "tool_clipboard_room_subtitle": "Echtzeit-Synchronisierung aktiviert. Ihre Änderungen werden automatisch gespeichert und verteilt.",
+
+    "clipboard_create_btn": "Meinen Zwischenablage-Raum erstellen",
+    "clipboard_feature_1_title": "Echtzeit-Sync",
+    "clipboard_feature_1_desc": "Unterstützt durch SSE-Technologie. Änderungen in jedem Fenster werden sofort auf alle anderen Online-Geräte übertragen.",
+    "clipboard_feature_2_title": "QR-Freigabe",
+    "clipboard_feature_2_desc": "Scannen Sie den QR-Code, um den Raum schnell auf Ihrem mobilen Gerät zu öffnen. Einfache Textübertragung zwischen PC und Handy.",
+    "clipboard_feature_3_title": "Automatische Bereinigung",
+    "clipboard_feature_3_desc": "Räume ohne aktive Verbindungen für 30 Minuten werden automatisch aus dem Speicher gelöscht, um Ihre Privatsphäre zu schützen.",
+
+    "clipboard_status_saving": "Speichern...",
+    "clipboard_status_saved": "Synchronisiert",
+    "clipboard_copy_link": "Raum-Link kopieren",
+    "clipboard_textarea_placeholder": "Inhalt hier einfügen oder tippen, um ihn zu synchronisieren...",
+    "clipboard_auto_sync_on": "Echtzeit-Sync: Aktiv",
+    "clipboard_scan_share": "Auf dem Handy öffnen",
+    "clipboard_scan_hint": "Scannen Sie den QR-Code unten, um diesem Raum beizutreten und Inhalte sofort zu synchronisieren.",
+    "clipboard_room_tip_title": "Nutzungstipps",
+    "clipboard_room_tip_1": "Lesezeichen: Speichern Sie diese ID-Seite als Lesezeichen, wenn Sie häufig darauf zugreifen müssen.",
+    "clipboard_room_tip_2": "Datenschutz: Speichern Sie keine dauerhaften sensiblen Daten. Räume werden nach 30 Minuten Inaktivität gelöscht.",
+
+    "clipboard_seo_h2_what": "Was ist ein Online-Zwischenablage-Tool?",
+    "clipboard_seo_p_what": "Eine Online-Zwischenablage ist ein Dienstprogramm, mit dem Benutzer Texte, Links oder Ausschnitte über eine eindeutige Raum-ID schnell zwischen verschiedenen Geräten (PC, Tablet, Handy) übertragen können.",
+    "clipboard_seo_h2_how": "Wie benutzt man es?",
+    "clipboard_seo_p_how": "1. Klicken Sie auf 'Raum erstellen', um eine eindeutige ID zu erhalten; 2. Tippen Sie in das Feld; 3. Öffnen Sie denselben Link auf einem anderen Gerät, um den Inhalt zu sehen. Alle Änderungen werden automatisch in Echtzeit gespeichert.",
+    "clipboard_seo_faq_1_q": "Werden meine Daten dauerhaft gespeichert?",
+    "clipboard_seo_faq_1_a": "Nein. Aus Datenschutzgründen verwenden wir In-Memory-Speicherung. Räume und Inhalte werden nach 30 Minuten Inaktivität (keine aktiven Verbindungen) dauerhaft gelöscht.",
+    "clipboard_seo_faq_2_q": "Was ist das Textlimit?",
+    "clipboard_seo_faq_2_a": "Es unterstützt lange Texte mit Zehntausenden von Zeichen, was für Code-Snippets, lange URLs oder Dokumententwürfe ausreicht."
 }

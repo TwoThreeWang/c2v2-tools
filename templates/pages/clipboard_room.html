@@ -1,0 +1,202 @@
+{{ define "clipboard_room.html" }}
+<!DOCTYPE html>
+<html lang="{{ .lang }}">
+{{ template "head" . }}
+
+<body class="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen" 
+      x-data="clipboardRoom('{{ .RoomID }}')">
+    {{ template "header" . }}
+
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+        <!-- Room Header: Simple and Clean -->
+        <div class="flex items-center justify-between mb-8 group">
+            <div class="flex items-center gap-4">
+                <div class="bg-indigo-600 text-white px-4 py-2 rounded-2xl shadow-sm font-bold tracking-wider flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                    ID: {{ .RoomID }}
+                </div>
+                <div class="h-8 w-px bg-slate-200"></div>
+                <div class="flex items-center gap-2">
+                    <div x-show="status === 'saving'" class="flex items-center text-indigo-500" x-cloak>
+                        <svg class="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        <span class="text-xs font-medium">{{ call .T "clipboard_status_saving" }}</span>
+                    </div>
+                    <div x-show="status === 'saved'" class="flex items-center text-emerald-500" x-cloak>
+                        <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        <span class="text-xs font-medium">{{ call .T "clipboard_status_saved" }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button @click="copyLink" 
+                    class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-xl text-slate-600 hover:border-indigo-500 hover:text-indigo-600 transition-all shadow-sm active:scale-95">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <span class="text-sm font-semibold">{{ call .T "clipboard_copy_link" }}</span>
+            </button>
+        </div>
+
+        <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Main Content Area -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[60vh] md:h-[70vh] ring-1 ring-slate-100 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all duration-300">
+                    <textarea 
+                        x-model="content"
+                        @input.debounce.500ms="saveContent"
+                        class="w-full h-full p-8 text-slate-800 text-lg leading-relaxed resize-none outline-none font-mono bg-transparent"
+                        placeholder="{{ call .T "clipboard_textarea_placeholder" }}"
+                        spellcheck="false"
+                    ></textarea>
+                    
+                    <div class="px-8 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+                        <div class="flex items-center">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                            {{ call .T "clipboard_auto_sync_on" }}
+                        </div>
+                        <div class="flex gap-4">
+                            <span x-text="'Lines: ' + content.split('\n').length"></span>
+                            <span x-text="'Chars: ' + content.length"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- QR Code Section -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm text-center group">
+                    <h3 class="font-bold text-slate-900 mb-6 flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4"></path></svg>
+                        {{ call .T "clipboard_scan_share" }}
+                    </h3>
+                    <div class="relative inline-block p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-6 transition-transform duration-300 group-hover:scale-105">
+                        <div id="qrcode" class="flex justify-center qr-container"></div>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed px-2">{{ call .T "clipboard_scan_hint" }}</p>
+                </div>
+
+                <!-- Tutorial Card -->
+                <div class="bg-gradient-to-br from-indigo-600 to-violet-700 p-8 rounded-[2rem] text-white shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+                    <div class="relative">
+                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-4">{{ call .T "clipboard_room_tip_title" }}</h4>
+                        <ul class="text-sm space-y-3 opacity-90 font-medium leading-snug">
+                            <li class="flex gap-2">
+                                <span class="text-indigo-200">•</span>
+                                {{ call .T "clipboard_room_tip_1" }}
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="text-indigo-200">•</span>
+                                {{ call .T "clipboard_room_tip_2" }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{ template "footer" . }}
+
+    <!-- Localized Scripts -->
+    <script src="/static/js/vendor/alpine.min.js" defer></script>
+    <script src="/static/js/vendor/qrcode.min.js"></script>
+
+    <style>
+        .qr-container img {
+            margin: auto;
+            border-radius: 8px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('clipboardRoom', (roomId) => ({
+                content: '',
+                status: 'idle', // idle, saving, saved
+                url: window.location.href,
+
+                init() {
+                    // 确保 DOM 加载后初始化二维码
+                    this.$nextTick(() => {
+                        this.initQRCode();
+                    });
+                    this.initSSE();
+                },
+
+                initQRCode() {
+                    const qrEl = document.getElementById("qrcode");
+                    if (!qrEl) return;
+                    qrEl.innerHTML = ""; // 清理旧内容
+                    new QRCode(qrEl, {
+                        text: this.url,
+                        width: 140,
+                        height: 140,
+                        colorDark : "#1e1b4b",
+                        colorLight : "#f8fafc",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+                },
+
+                initSSE() {
+                    const eventSource = new EventSource(`/api/clipboard/stream/${roomId}`);
+                    
+                    eventSource.onmessage = (event) => {
+                        try {
+                            const data = JSON.parse(event.data);
+                            if (data.content !== undefined && data.content !== this.content) {
+                                this.content = data.content;
+                            }
+                        } catch (e) {
+                            // 忽略非 JSON 数据（如 ping）
+                        }
+                    };
+
+                    eventSource.onerror = () => {
+                        console.error("SSE Connection lost. Retrying...");
+                    };
+                },
+
+                async saveContent() {
+                    this.status = 'saving';
+                    try {
+                        const response = await fetch(`/api/clipboard/save/${roomId}`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ content: this.content })
+                        });
+                        
+                        if (response.ok) {
+                            this.status = 'saved';
+                            setTimeout(() => {
+                                if (this.status === 'saved') this.status = 'idle';
+                            }, 2000);
+                        } else {
+                            this.status = 'idle';
+                        }
+                    } catch (e) {
+                        console.error("Save failed", e);
+                        this.status = 'idle';
+                    }
+                },
+
+                copyLink() {
+                    // 使用标准的复制方法，移除多余的弹窗，仅依赖控制台或状态反馈
+                    navigator.clipboard.writeText(this.url).then(() => {
+                        // 如果有全局通知系统可以使用，否则通过改变按钮显示或小反馈
+                        // 用户反馈会多出弹窗，可能是因为 init 里多次绑定或事件冒泡
+                        // 这里直接执行，不再使用 alert 以避免重复弹窗干扰
+                        this.status = 'saved'; 
+                        setTimeout(() => this.status = 'idle', 1000);
+                    }).catch(err => {
+                        console.error('Copy failed:', err);
+                    });
+                }
+            }));
+        });
+    </script>
+</body>
+</html>
+{{ end }}

@@ -267,5 +267,42 @@
         "pwd_seo_faq_1_a": "Yes, IF the tool runs locally. Our Password Generator runs entirely in your browser using JavaScript. No data is ever sent to our servers. You can even disconnect your internet and use it!",
 
         "cat_security_title": "Security Tools",
-        "cat_security_desc": "Essential tools for securing your digital life. Generate strong passwords, hashes, and more."
+        "cat_security_desc": "Essential tools for securing your digital life. Generate strong passwords, hashes, and more.",
+        "cat_utilities_title": "Utilities",
+        "cat_utilities_desc": "Tools for boosting daily productivity. Cross-device collaboration, content syncing, etc.",
+
+        "tool_clipboard_title": "Online Clipboard",
+        "tool_clipboard_desc": "Instant text synchronization across multiple devices. Sync content in real-time by joining the same room ID. Supports QR code access and auto-save.",
+        "tool_clipboard_keywords": "online clipboard, clipboard sync, cross-device clipboard, text sharing, real-time sync, auto-save clipboard",
+        "tool_clipboard_room_title": "Sync Room",
+        "tool_clipboard_room_desc": "This is a privacy-first real-time synchronization space. Content entered here will be synced to all devices with this page open.",
+        "tool_clipboard_room_subtitle": "Real-time sync enabled. Your changes are automatically saved and distributed.",
+
+        "clipboard_create_btn": "Create My Clipboard Room",
+        "clipboard_feature_1_title": "Real-time Sync",
+        "clipboard_feature_1_desc": "Powered by SSE technology. Changes in any window are pushed instantly to all other online devices.",
+        "clipboard_feature_2_title": "QR Sharing",
+        "clipboard_feature_2_desc": "Scan the QR code to quickly open the room on your mobile device. Easy text transfer between PC and phone.",
+        "clipboard_feature_3_title": "Auto Cleanup",
+        "clipboard_feature_3_desc": "Rooms with no active connections for 30 minutes are automatically cleared from memory to protect your privacy.",
+
+        "clipboard_status_saving": "Saving...",
+        "clipboard_status_saved": "Synced",
+        "clipboard_copy_link": "Copy Room Link",
+        "clipboard_textarea_placeholder": "Paste or type your content here to sync...",
+        "clipboard_auto_sync_on": "Real-time Sync: Active",
+        "clipboard_scan_share": "Scan to Open on Mobile",
+        "clipboard_scan_hint": "Scan the QR code below to join this room and sync content immediately.",
+        "clipboard_room_tip_title": "Usage Tips",
+        "clipboard_room_tip_1": "Bookmark: Save this ID page as a bookmark if you need to access it frequently.",
+        "clipboard_room_tip_2": "Privacy: Don't store permanent sensitive data. Rooms are cleared after 30 minutes of inactivity.",
+
+        "clipboard_seo_h2_what": "What is an Online Clipboard Tool?",
+        "clipboard_seo_p_what": "An online clipboard is a utility that allows users to quickly transfer text, links, or snippets between different devices (PC, tablet, mobile) via a unique Room ID.",
+        "clipboard_seo_h2_how": "How to use it?",
+        "clipboard_seo_p_how": "1. Click 'Create Room' to get a unique ID; 2. Type in the box; 3. Open the same link on another device to see the content. All changes are saved automatically in real-time.",
+        "clipboard_seo_faq_1_q": "Is my data stored permanently?",
+        "clipboard_seo_faq_1_a": "No. For privacy, we use in-memory storage. Rooms and contents are permanently destroyed after 30 minutes of inactivity (no active connections).",
+        "clipboard_seo_faq_2_q": "What is the text limit?",
+        "clipboard_seo_faq_2_a": "It supports long text of tens of thousands of characters, sufficient for code snippets, long URLs, or document drafts."
     }

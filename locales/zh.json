@@ -288,5 +288,42 @@
         "pwd_seo_faq_1_a": "是的，前提是工具在本地运行。我们的密码生成器完全使用 JavaScript 在您的浏览器中运行。没有任何数据会发送到我们的服务器。您甚至可以断开网络使用它！",
 
         "cat_security_title": "安全工具",
-        "cat_security_desc": "保护您数字生活的基本工具。生成强密码、哈希值等。"
+        "cat_security_desc": "保护您数字生活的基本工具。生成强密码、哈希值等。",
+        "cat_utilities_title": "实用工具",
+        "cat_utilities_desc": "提升日常效率的小工具。支持跨设备协作、内容同步等。",
+
+        "tool_clipboard_title": "在线剪贴板",
+        "tool_clipboard_desc": "在多台设备之间即时同步文本。只需打开相同 ID 的房间，即可实现内容实时共享、自动保存和二维码扫码访问。",
+        "tool_clipboard_keywords": "在线剪贴板, 剪贴板同步, 跨设备剪贴板, 文本共享, 实时同步, 自动保存剪贴板",
+        "tool_clipboard_room_title": "同步房间",
+        "tool_clipboard_room_desc": "这是一个隐私优先的实时同步空间。在此输入的内容将自动同步到所有打开该页面的设备。",
+        "tool_clipboard_room_subtitle": "实时同步已开启，您的输入将自动保存并分发到其他客户端。",
+
+        "clipboard_create_btn": "创建我的剪贴板房间",
+        "clipboard_feature_1_title": "实时同步",
+        "clipboard_feature_1_desc": "基于 SSE 技术，任何页面的修改都会立即推送到其他所有在线设备，无需手动刷新。",
+        "clipboard_feature_2_title": "二维码共享",
+        "clipboard_feature_2_desc": "通过扫描二维码在手机上快速打开相同房间，轻松实现电脑与手机间的文字传输。",
+        "clipboard_feature_3_title": "自动清理",
+        "clipboard_feature_3_desc": "当房间持续 30 分钟无活动且无活跃连接时，数据将自动从内存中移除，保护您的隐私。",
+
+        "clipboard_status_saving": "保存中...",
+        "clipboard_status_saved": "已同步",
+        "clipboard_copy_link": "复制房间链接",
+        "clipboard_textarea_placeholder": "在此输入您要同步的文本内容...",
+        "clipboard_auto_sync_on": "实时同步状态：连接正常",
+        "clipboard_scan_share": "扫码在手机打开",
+        "clipboard_scan_hint": "移动设备扫描上方二维码，即刻加入此房间同步内容。",
+        "clipboard_room_tip_title": "使用小贴士",
+        "clipboard_room_tip_1": "书签：如果您需要多次使用，建议将此 ID 页面加入书签。",
+        "clipboard_room_tip_2": "隐私：请勿存储长期或极其敏感的数据，房间在无连接 30 分钟后会自动清理。",
+
+        "clipboard_seo_h2_what": "什么是在线剪贴板工具？",
+        "clipboard_seo_p_what": "在线剪贴板是一种允许用户在不同设备（电脑、平板、手机）之间快速传输文本、链接或验证码的工具。通过一个短小的随机 ID 房间，您可以跨越操作系统障碍，实现信息的秒速同步。",
+        "clipboard_seo_h2_how": "如何使用？",
+        "clipboard_seo_p_how": "1. 点击“创建房间”获取一个唯一 ID；2. 在文本框输入内容；3. 在其他设备打开相同链接或扫描二维码，即可看到相同内容。所有更改都是实时自动保存的。",
+        "clipboard_seo_faq_1_q": "我的内容会被永久存储吗？",
+        "clipboard_seo_faq_1_a": "不会。为了保护用户隐私，我们的剪贴板采用纯内存存储。一旦房间在 30 分钟内没有活跃连接，系统将彻底销毁该房间及其内容。",
+        "clipboard_seo_faq_2_q": "支持多大容量的文本？",
+        "clipboard_seo_faq_2_a": "目前支持数万字符的长文本同步，足以满足日常代码片段、长网址或长文稿的跨端传输需求。"
     }
